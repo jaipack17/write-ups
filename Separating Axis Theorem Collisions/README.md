@@ -10,4 +10,10 @@ The theorem states that two bodies don't collide, as long we are able to put a s
 
 ![image](https://user-images.githubusercontent.com/74130881/134708625-09b4789d-98ae-4d71-92c6-06b2e66e43a0.png)
 
-In Figure 1, both shapes are Convex polygons and do not collide. While, in Figure 2, one of the shapes is a Concave polygon. Both shapes appear to be free of any collisions but since the line intersects 1 of the shapes by this theorem, they are said to be colliding even though they are not. This shouldn't be too big of a problem unless its a large scale project.
+In Figure 1, both shapes are Convex polygons and do not collide. While, in Figure 2, one of the shapes is a Concave polygon. Both shapes appear to be free of any collisions but since the line intersects 1 of the shapes by this theorem, they are said to be colliding even though they are not. This shouldn't be too big of a problem unless its a large scale project. 
+
+Now onto detecting collisions. We use something called a 'projection' of the two shapes. Let there be another line named the 'axis' which is perpendicular to the Separating line (line in between the two shapes). We can now project the shapes onto this perpendicular. IF the separating line intersect either of the projections, the shapes are said to be colliding. We do not need to worry about where we create the project (left or right), since the projection ultimately is no longer 2 dimensional, rather 1 dimensional. 
+
+![image](https://user-images.githubusercontent.com/74130881/134711848-fdcda5cb-e42d-46ee-ba2e-1d7c9ea1e04f.png)
+
+
