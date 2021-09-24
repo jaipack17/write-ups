@@ -14,11 +14,13 @@ In Figure 1, both shapes are Convex polygons and do not collide. While, in Figur
 
 Now onto detecting collisions. We use something called a 'projection' of the two shapes. Let there be another line named the 'axis' which is perpendicular to the Separating line (line in between the two shapes). We can now project the shapes onto this perpendicular. IF the separating line intersect either of the projections, the shapes are said to be colliding. We do not need to worry about where we create the project (left or right), since the projection ultimately is no longer 2 dimensional, rather 1 dimensional. 
 
-The pseudocode (lua) below is used to make the projection of a shape onto the Axis.
+![Webp net-resizeimage](https://user-images.githubusercontent.com/74130881/134713214-3a85a3b0-b237-42fa-a90e-93b9a26c1fce.png)
+
+The pseudocode (lua) below is used to make the projection of a shape onto the Axis. `vertices` is the array containing all verticies of the shape. We loop through each point and project it to the axis. `min` and `max` values are set to be the dot product of the Axis and the Vertex after being compared to already existing min and max values. We then update min and max values to appropriate results of the projection.
 
 ```lua
-function Body:CreateProjection(Axis) 
-	local dot = Axis.x * self.vertices[1].pos.x + Axis.y * self.vertices[1].pos.y;
+function CreateProjection(Axis) 
+	local dot = Axis.x * vertices[1].pos.x + Axis.y * vertices[1].pos.y;
 
 	local min, max = dot, dot;
 
@@ -32,6 +34,4 @@ function Body:CreateProjection(Axis)
 	return min, max
 end
 ```
-
-![Webp net-resizeimage](https://user-images.githubusercontent.com/74130881/134713214-3a85a3b0-b237-42fa-a90e-93b9a26c1fce.png)
 
