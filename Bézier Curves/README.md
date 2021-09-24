@@ -58,7 +58,7 @@ A Linear Bézier curve is not really a curve, but a straight line formed using t
 
 ![linear](https://github.com/jaipack17/write-ups/blob/main/B%C3%A9zier%20Curves/assets/linear.gif?raw=true)
 
-The pseudocode for the above simulation is:
+The pseudocode for the above simulation is as follows:
 
 ```lua
 p0 = (x, y);
@@ -75,7 +75,7 @@ for t until t == 1, increment by 0.01 do
 end
 ```
 
-The above pseudocode increase the value of t by 0.01 and draws a point at the lerped position giving us the simulation of the gif. You may increment t by numbers like 0.1, 0.001 etc which'll give you different sorts of results, *depending on how low the value is, it hurts performance but gives a smoother line*
+In the above pseudocode, there is an increase in the value of t by 0.01. A point is then drawn at the lerped waypoint giving us the simulation of the gif. You may increment t by numbers like 0.1, 0.001 etc which'll give you different sorts of results, *depending on how low the value is, it hurts performance but gives a smoother line*
 
 # Quadratic Bézier Curves
 
