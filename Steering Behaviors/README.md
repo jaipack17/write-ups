@@ -136,7 +136,7 @@ To test this out, every frame I set the goal to be the mouse's position on the s
 
 Here's the result!
 
-![2L3u4vDuSZ (online-video-cutter.com)|video](upload://7TaTbeOy6I79VIKefsHn8Bcugpk.mp4)
+![2L3u4vDuSZ (online-video-cutter.com)|video](https://github.com/jaipack17/write-ups/blob/main/Steering%20Behaviors/assets/2L3u4vDuSZ%20(online-video-cutter.com)%20(2).mp4?raw=true)
 
 <hr/>
 
@@ -144,11 +144,11 @@ Here's the result!
 
 In this gif, you can see how the object is fleeing from a point. Imagine this situation. You are in the middle of a car chase. Your car is being chased by another car. What will you do? Will you go towards the other car to flee from it? Of-course! Flee. Here's how you can simulate Flee Steering Behavior!
 
-![](upload://zzRRSmK94Zx9brMTtOsP6wUtfoa.gif)
+![seek and flee](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/f/9/5/f95a127cf990a82a51e778d5da35b7d2e26808ae.gif)
 
 It is really simple, now that we have our seek function. You might laugh at this. But all you have to do is multiply the steeringForce with -1 to convert seek to flee.. Yeah..
 
-![t1T3bN8Iy7 (online-video-cutter.com)|video](upload://jBDKgzxElQvWarHwBTJ5zfvdSiB.mp4)
+https://user-images.githubusercontent.com/74130881/134692987-da2be6c4-11bf-48f4-8e9c-2f5a788ce0f2.mp4
 
 Well.. that was fast. Guess the circle didn't like my mouse all this time.
 
