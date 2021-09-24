@@ -6,17 +6,17 @@
 <hr/>
 
 ## Table of Contents
-* [Preface - What are Steering Behaviors?](#preface---what-are-steering-behaviors?)
-* [Coding Steering Behaviors](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#coding-steering-behaviors-3)
-    * [Seek Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#seek-steering-behavior-4)
-    * [Flee Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#flee-steering-behavior-5)
-    * [Arrival Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#arrival-steering-behavior-6)
-    * [Pursue Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#pursue-steering-behavior-7)
-    * [Evade Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#evade-steering-behavior-8) 
-    * [Wander Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/6)
-    * [Cleaning up messy code](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#cleaning-up-messy-code-9)
-    * [Grouping Steering Behaviors](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#grouping-steering-behaviors-10)
-* [Conclusion](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#conclusion-11)
+* [Preface - What are Steering Behaviors?](#preface---what-are-steering-behaviors)
+* [Coding Steering Behaviors](#coding-steering-behaviors)
+    * [Seek Steering Behavior](#seek-steering-behavior)
+    * [Flee Steering Behavior](#flee-steering-behavior)
+    * [Arrival Steering Behavior](#arrival-steering-behavior)
+    * [Pursue Steering Behavior](#pursue-steering-behavior)
+    * [Evade Steering Behavior](#evade-steering-behavior) 
+    * [Wander Steering Behavior]()
+    * [Cleaning up messy code](#cleaning-up-messy-code)
+    * [Grouping Steering Behaviors](#grouping-steering-behaviors)
+* [Conclusion](#conclusion)
 
 <hr/>
 
