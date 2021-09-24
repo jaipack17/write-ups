@@ -25,6 +25,7 @@ Bézier curves are formed using nested/multiple Linear Interpolations. Let's und
 * Basic knowledge of algebra
 * Basic knowledge of algebraic functions
 * Basic knowledge of geometry and its terminologies 
+* Understanding of Coordinates and Vectors
 
 # Linear Interpolation
 
