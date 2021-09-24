@@ -36,7 +36,10 @@ Suppose you have a line segment with two endpoints P0 and P1. How would you go a
 
 Consider a percentage value between 0 and 1 where 0.1 denotes 10%, 0.25 denotes 25%, 0.97 denotes 97% and so on. We use this percentage value to calculate a way point on the line segment. Example: let the percentage value be 0.5 (50%), using linear interpolation we'll be able to calculate the mid-point of the line segment.
 
-Lets denote this percentage value by the letter 't' by standards.
+Lets denote this percentage value by the letter 't' by standards. Here's a brief visualization of what I am up to:
 
+![image](https://user-images.githubusercontent.com/74130881/134638261-f03c8be3-3d77-4b71-9e8e-94d38c9104ac.png)
+
+We have a basic idea on how we'll get these points, lets write it in the form of an expression.
 
 
