@@ -43,4 +43,8 @@ Lets denote this percentage value by the letter 't' by standards. Here's a brief
 
 We have a basic idea on how we'll get these points, lets write it in the form of an expression.
 
+![formula](https://github.com/jaipack17/write-ups/blob/main/B%C3%A9zier%20Curves/assets/formula.JPG?raw=true)
+
+Yep, it's that simple. So what's happening here? Here P0 and P1 are vector values that consist of x and y. Lets take an example. Let P0 be (0, 0) and P1 be (2, 2). We add the difference of the positions of P1 and P0, multiply it with t to get the t'th% vector position and add it to the position of P0. This is basically the unitary method!
+
 
