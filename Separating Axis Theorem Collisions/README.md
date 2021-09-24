@@ -16,7 +16,7 @@ Now onto detecting collisions. We use something called a 'projection' of the two
 
 ![Webp net-resizeimage](https://user-images.githubusercontent.com/74130881/134713214-3a85a3b0-b237-42fa-a90e-93b9a26c1fce.png)
 
-The pseudocode (lua) below is used to make the projection of a shape onto the Axis. `vertices` is the array containing all verticies of the shape. We loop through each point and project it to the axis. `min` and `max` values are set to be the dot product of the Axis and the Vertex after being compared to already existing min and max values. We then update min and max values to appropriate results of the projection.
+The pseudocode (lua) below is used to make the projection of a shape onto the Axis. `vertices` is the array containing all verticies of the shape. We loop through each point and project it to the axis. `min` and `max` values are set to be the dot product of the Axis and the Vertex after being compared to already existing min and max values. We then update min and max values to appropriate results of the projection. In every case, the 2 points farthest to each other are projected. Or in short, the projection in 2 dimensions is the dot product of the projection axis and the vertex we project.  
 
 ```lua
 function CreateProjection(Axis) 
@@ -35,3 +35,6 @@ function CreateProjection(Axis)
 end
 ```
 
+![image](https://user-images.githubusercontent.com/74130881/134716839-dd860173-66d9-4ac8-91c5-e486fbbb10f2.png)
+
+All that is left for Collision detection is loop through the edges of the shape, calculating the axis to project the points on, based on the endpoints of the edge, project the points on the axis, and simply checking if the projections overlap each other i.e the separating line intersect either of the projections.
