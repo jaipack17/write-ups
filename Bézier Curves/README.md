@@ -8,8 +8,8 @@
 * [Prerequisites](#prerequisites)
 * [Linear Interpolation](#linear-interpolation)
 * [Linear Bézier Curve](#linear-bézier-curve)
-* [Quadratic Bézier Curve](#quadratic-bézier-curve)
-* [Cubic Bézier Curve](#cubic-bézier-curve)
+* [Quadratic Bézier Curve](#quadratic-bézier-curves)
+* [Cubic Bézier Curve](#cubic-bézier-curves)
 * [Conclusion](#conclusion)
 * [Resources](#resources)
 
