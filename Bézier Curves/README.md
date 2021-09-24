@@ -77,5 +77,10 @@ for t until t == 1, increment by 0.01 do
 end
 ```
 
-The above pseudocode increase the value of t by 0.01 and draws a point at the lerped position giving us the simulation of the gif. You may increment t by numbers like 0.1, 0.001 etc which'll give you different sorts of results *depending on how low the value is, it hurts performance but gives a smoother line*
+The above pseudocode increase the value of t by 0.01 and draws a point at the lerped position giving us the simulation of the gif. You may increment t by numbers like 0.1, 0.001 etc which'll give you different sorts of results, *depending on how low the value is, it hurts performance but gives a smoother line*
 
+# Quadratic Bézier Curves
+
+Previously we looked into Linear Bézier curves which basically gave us a line. Now to the curve, a quadratic curve looks something like the following:
+
+![quad](https://developer.roblox.com/assets/blt6bac53c6c6f16b7b/Bezier2.gif)
