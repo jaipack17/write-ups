@@ -243,6 +243,22 @@ You can see how its evading the target.
 
 <hr/>
 
+### Wander Steering Behavior
+This steering behavior is extremely helpful for simulating cars and npcs that walk in random directions. In this steering behavior. A random target is chosen in a given radius, some pixels ahead of the direction an object is facing. The object then seeks this target which results in a smooth simulation of this steering behavior.
+
+![6zMEXUL7CS (online-video-cutter.com)|video](upload://ad7IU4iXsuJLsqOWT6NJnx7tYFy.mp4)
+![Uzl5vI3d15 (online-video-cutter.com)|video](upload://8uipke7VfXdAXCIpI7ZzfJK3vAa.mp4)
+
+How this works:
+
+There's an initial angle to the red circle. A random angle is chosen, the white circle you see ahead of the red circle is the radius inside which the targets are chosen. This radius is found using the velocity of the red circle and the chosen angle. A target inside this is chosen and the red circle is asked to seek this target. The cyan point you see on the white circle's circumference locates the direction of the steering force.
+
+uncopylocked place:
+
+https://www.roblox.com/games/7351301290/Wander-Steering
+
+<hr/>
+
 ### Cleaning up messy code
 
 Before we go onto combining steering behaviors to create something cool. We need to clean up this mess. 
