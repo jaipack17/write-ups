@@ -7,10 +7,9 @@
 * [Overview](#overview)
 * [Prerequisites](#prerequisites)
 * [Linear Interpolation](#linear-interpolation)
-* Linear Bézier Curve
+* [Linear Bézier Curve](#linear-bézier-curve)
 * Quadratic Bézier Curve
 * Cubic Bézier Curve
-* Bézier Curves with 'n' Control Points
 * Resources
 
 # Overview
