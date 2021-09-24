@@ -52,6 +52,6 @@ Yep, it's that simple. So what's happening here? Here P0 and P1 are vector value
 
 The difference of P0 and P1 is (2, 2), multiply (2, 2) with 0.5, which gives us (2 * 0.5, 2 * 0.5) which is (1, 1). Ultimately add this to P0 which gives us (0, 0) + (1, 1) = (1, 1). Amazing! We now have the mid point of the line. This should work in all cases as long as t = real number between 0 and 1! Ultimately, after simplying the above expression we can rewrite it as:
 
-
+![final-formula](https://github.com/jaipack17/write-ups/blob/main/B%C3%A9zier%20Curves/assets/final.JPG?raw=true)
 
 # Linear Bézier Curve
