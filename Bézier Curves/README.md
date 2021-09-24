@@ -9,7 +9,7 @@
 * [Linear Interpolation](#linear-interpolation)
 * [Linear Bézier Curve](#linear-bézier-curve)
 * [Quadratic Bézier Curve](#quadratic-bézier-curve)
-* Cubic Bézier Curve
+* Cubic Bézier Curve(#cubic-bézier-curve)
 * Resources
 
 # Overview
@@ -106,6 +106,10 @@ It does infact form a curve! This is a quadratic bezier curve. Looking back to h
 
 ![image](https://user-images.githubusercontent.com/74130881/134648644-db3b4004-d376-432d-9f5d-e9f9d340d50b.png)
 
+Which can further be written as
+
+![image](https://user-images.githubusercontent.com/74130881/134649542-b3db54f5-bb04-4bcb-b54c-2edde0c6a57a.png)
+
 ```lua
 p0 = (x, y);
 p1 = (x, y);
@@ -123,3 +127,5 @@ end
 ```
 
 # Cubic Bézier Curves
+
+Cubic curves are very similar to Quadratic curves, but this time we use two control points C0 and C1 instead of 1. A cubic curve is a combination of two Quadratic curves.
