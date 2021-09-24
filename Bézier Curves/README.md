@@ -194,3 +194,4 @@ Thanks for reading.
 [Bézier Curves by Guidev](https://www.youtube.com/watch?v=pnYccz1Ha34&ab_channel=Guidev) <br/>
 [The Beauty of Bézier Curves by Freya Holmér](https://www.youtube.com/watch?v=aVwxzDHniEw&ab_channel=FreyaHolm%C3%A9r) <br/>
 [Bézier Curves by Daniel Shiffman](https://www.youtube.com/watch?v=enNfb6p3j_g) <br/>
+[Sandbox - desmos](https://www.desmos.com/calculator/cahqdxeshd)
