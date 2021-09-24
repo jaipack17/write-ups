@@ -6,7 +6,7 @@
 <hr/>
 
 ## Table of Contents
-* [Preface -  What are Steering Behaviors?](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680#preface-what-are-steering-behaviors-2)
+* [Preface -  What are Steering Behaviors?](#Preface -  What are Steering Behaviors?)
 * [Coding Steering Behaviors](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#coding-steering-behaviors-3)
     * [Seek Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#seek-steering-behavior-4)
     * [Flee Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#flee-steering-behavior-5)
