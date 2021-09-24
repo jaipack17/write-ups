@@ -55,3 +55,6 @@ The difference of P0 and P1 is (2, 2), multiply (2, 2) with 0.5, which gives us 
 ![final-formula](https://github.com/jaipack17/write-ups/blob/main/B%C3%A9zier%20Curves/assets/final.JPG?raw=true)
 
 # Linear Bézier Curve
+
+A Linear Bézier curve is not really a curve, but a straight line formed using the lerp function we talked about above. If we increase the value of t by some incrementation value up till 1 and draw a point, we'll notice that a line is formed between the two anchor points we took. Here's a visualization of the same:
+
