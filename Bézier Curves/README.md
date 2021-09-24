@@ -71,7 +71,7 @@ function lerp(t)
    return (1 - t) * p0 + t * p1
 end
 
-for t uptil 1, increment by 0.01 do 
+for t until t == 1, increment by 0.01 do 
    point = lerp(t)
    drawPointAt(point)
 end
