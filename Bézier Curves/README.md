@@ -125,6 +125,8 @@ for t until t == 1, increment by 0.01 do
 end
 ```
 
+P.S. *[media sources](https://www.youtube.com/watch?v=pnYccz1Ha34)*
+
 # Cubic Bézier Curves
 
 Cubic curves are very similar to Quadratic curves, but this time we use two control points C0 and C1 instead of 1. A cubic curve is a combination of two Quadratic curves. Let's take two anchor points P0 and P1, and two control points C0 and C1:
@@ -176,6 +178,8 @@ for t until t == 1, increment by 0.01 do
    drawPointAt(cubic)
 end
 ```
+
+P.S. *[media sources](https://editor.p5js.org/ilmnarayana/full/_vyuj8rli)*
 
 # Conclusion
 
