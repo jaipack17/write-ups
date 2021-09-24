@@ -8,15 +8,15 @@
 
 One of fanciest if not the most optimal way of simulating physics in physics engines, computer graphics and games is the Verlet Integration. One of the famous 2D Physics engine that goes by the name of [Box2D](https://box2d.org/) uses this integration. Another physics engine that run in the browser, for example [matter.js](http://brm.io/matter-js/) also uses this magical way of smooth physics simulations. 
 
-![physics](upload://w6TjgN9jooT4RkIvLMnNkcOIYDt.gif)
+![physics](https://github.com/jaipack17/write-ups/blob/main/Verlet%20Integration/assets/e10d034c2caff9088243b0bc17cddb016e0e8a3f.gif?raw=true)
 
-If you want to learn more about verlet integration, want to make smooth physics simulations using guis or are just curious, then this post is an engrossing adventure for you. 
+If you want to learn more about verlet integration, want to make smooth physics simulations using guis or are just curious, then this article is an engrossing adventure for you. 
 
-Now to the jewel of this post. **What is verlet integration?** Verlet is a set of mathematical algorithms used to integrate physics in terms of Newton's laws of motion. It is mostly used in Computer Graphics and Game Development. It lies around points connected with line segment and realistic motion. We'll look into the algorithms in a moment, but first I'd like to share why I am making this topic. After all, Roblox isn't made for 2D games that consist of only UI elements, and that's the reason I have written this for you, to give you sort of an idea and an overlook of how you can simulate physics in roblox using merely guis! @EgoMoose has written [a beautiful article](https://drive.google.com/file/d/0B8NceKcllVYrXzhlaDFWdHp5YTg/view?resourcekey=0-oKq1itaKAZCvP7sZRWVopg) for Verlet Integration inclined towards 3D objects, so be sure to check that out if you are more into 3D Verlet Integration than 2D.
+Now to the jewel of this article. **What is verlet integration?** Verlet is a set of mathematical algorithms used to integrate physics in terms of Newton's laws of motion. It is mostly used in Computer Graphics and Game Development. It lies around points connected with line segment and realistic motion. We'll look into the algorithms in a moment, but first I'd like to share why I am making this topic. After all, Roblox isn't made for 2D games that consist of only UI elements, and that's the reason I have written this for you, to give you sort of an idea and an overlook of how you can simulate physics in roblox using merely guis! @EgoMoose has written [a beautiful article](https://drive.google.com/file/d/0B8NceKcllVYrXzhlaDFWdHp5YTg/view?resourcekey=0-oKq1itaKAZCvP7sZRWVopg) for Verlet Integration inclined towards 3D objects, so be sure to check that out if you are more into 3D Verlet Integration than 2D.
 
 I will be covering the fundamentals as well as how I created this ragdoll using only guis and verlet integration:
 
-![RgPPBoeTRG (online-video-cutter.com)|690x338](upload://pGkRXxaFusXlEIJucisKhrrZ381.gif)
+![RgPPBoeTRG (online-video-cutter com)](https://user-images.githubusercontent.com/74130881/134695238-a2c85353-c377-4ba6-aebe-dead59b761b6.gif)
 
 <hr/>
 
@@ -346,7 +346,7 @@ Looks great to me! You can play around with points and segments to create other 
 <hr/>
 
 # How I made the Ragdoll
-I made this post to explain to you all, how I made the ragdoll I showcased towards the beginning of the tutorial along with the fundamentals of Verlet Integration. So far, you must have got the gist of how magical Verlet Integration can be.
+I made this article to explain to you all, how I made the ragdoll I showcased towards the beginning of the tutorial along with the fundamentals of Verlet Integration. So far, you must have got the gist of how magical Verlet Integration can be.
 
 Making a ragdoll was fairly simple. I used the same Points and Segments I used to make the box above! But with just a few more points and segments to make it look like a Human Ragdoll!
 
@@ -366,7 +366,7 @@ Now, to the next point. How exactly did I connect the points to make it look lik
 
 That's just the basic Idea of how the Rig of the Ragdoll looks behind the scenes with the Support Beams. Its a combination of quadrilaterals and free rope like limbs!
 
-Then, using UserInputService I make the points selectable and draggable! Verlet Integration is super cool and flexible that it does the job of realistic movement of the ragdoll (which isn't an active ragdoll) so smoothly with the basic algorithm that I discussed above in the post!!
+Then, using UserInputService I make the points selectable and draggable! Verlet Integration is super cool and flexible that it does the job of realistic movement of the ragdoll (which isn't an active ragdoll) so smoothly with the basic algorithm that I discussed above in the article!!
 
 Here's the ragdoll in action:
 
