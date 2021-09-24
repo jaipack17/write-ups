@@ -246,11 +246,11 @@ You can see how its evading the target.
 ### Wander Steering Behavior
 This steering behavior is extremely helpful for simulating cars and npcs that walk in random directions. In this steering behavior. A random target is chosen in a given radius, some pixels ahead of the direction an object is facing. The object then seeks this target which results in a smooth simulation of this steering behavior.
 
-![6zMEXUL7CS (online-video-cutter.com)|video](upload://ad7IU4iXsuJLsqOWT6NJnx7tYFy.mp4) <br/>
-![Uzl5vI3d15 (online-video-cutter.com)|video](upload://8uipke7VfXdAXCIpI7ZzfJK3vAa.mp4) <br/>
+![6zMEXUL7CS (online-video-cutter.com)|video](upload://ad7IU4iXsuJLsqOWT6NJnx7tYFy.mp4) <br/> <br/>
+![Uzl5vI3d15 (online-video-cutter.com)|video](upload://8uipke7VfXdAXCIpI7ZzfJK3vAa.mp4) <br/> <br/>
 
-https://user-images.githubusercontent.com/74130881/134693357-2da69ed7-79dd-4bff-ad9a-4fd010a798ba.mp4 <br/>
-https://user-images.githubusercontent.com/74130881/134693365-c92f0606-34cb-4b75-a0c4-8b015e92cb6e.mp4 <br/>
+https://user-images.githubusercontent.com/74130881/134693357-2da69ed7-79dd-4bff-ad9a-4fd010a798ba.mp4 <br/> <br/>
+https://user-images.githubusercontent.com/74130881/134693365-c92f0606-34cb-4b75-a0c4-8b015e92cb6e.mp4 <br/> <br/>
 
 How this works:
 
