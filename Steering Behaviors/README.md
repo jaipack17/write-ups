@@ -536,10 +536,4 @@ You can even create stuff like this, using Steering Behaviors, although this isn
 
 ## Conclusion
 
-This marks the end of this tutorial, I hope you understood what Steering Behaviors are and how you can script them in roblox to make awesome stuff. If you have any suggestions or questions, feel free to share them. I'll make a tutorial soon about Flocking Steering Behavior and Object Avoidance Steering Behavior. I hope this helped, have fun! :+1:.
-
-## Update Log
-
-* For the evade steering behavior. I reversed the force instead of the desired velocity. Fixed now.
-* Fixed code for evade and variable names.
-* Added wander steering behavior.
+I hope you understood what Steering Behaviors are and how you can script them in roblox to make awesome stuff. I hope this helped, have fun! :+1:.
