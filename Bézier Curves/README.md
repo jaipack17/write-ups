@@ -1,6 +1,7 @@
 <div align="center">
    <h1>Bézier Curves</h1>
    <p>A cavernous dive into the world of Bézier Curves - The Fundamentals</p>
+   <hr/>
 </div>
 
 # Table of Contents
