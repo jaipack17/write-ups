@@ -163,7 +163,7 @@ Note that the value of t for all interpolations remain equal throughout. We can 
 p0 = (x, y);
 p1 = (x, y);
 c0 = (x, y);
-c1 = (x, y)
+c1 = (x, y);
 t = 0;
 
 function lerp(t)
