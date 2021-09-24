@@ -136,7 +136,7 @@ To test this out, every frame I set the goal to be the mouse's position on the s
 
 Here's the result!
 
-![2L3u4vDuSZ (online-video-cutter.com)](https://github.com/jaipack17/write-ups/blob/main/Steering%20Behaviors/assets/2L3u4vDuSZ%20(online-video-cutter.com)%20(2).mp4?raw=true)
+https://user-images.githubusercontent.com/74130881/134693799-36d9b2e6-7583-436f-9b5d-195e33e3da6a.mp4
 
 <hr/>
 
