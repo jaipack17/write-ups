@@ -14,6 +14,4 @@ In Figure 1, both shapes are Convex polygons and do not collide. While, in Figur
 
 Now onto detecting collisions. We use something called a 'projection' of the two shapes. Let there be another line named the 'axis' which is perpendicular to the Separating line (line in between the two shapes). We can now project the shapes onto this perpendicular. IF the separating line intersect either of the projections, the shapes are said to be colliding. We do not need to worry about where we create the project (left or right), since the projection ultimately is no longer 2 dimensional, rather 1 dimensional. 
 
-![image|100x100](https://user-images.githubusercontent.com/74130881/134711848-fdcda5cb-e42d-46ee-ba2e-1d7c9ea1e04f.png)
-
-
+![Webp net-resizeimage](https://user-images.githubusercontent.com/74130881/134713214-3a85a3b0-b237-42fa-a90e-93b9a26c1fce.png)
