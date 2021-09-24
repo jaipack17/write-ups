@@ -83,7 +83,7 @@ Previously we looked into Linear Bézier curves which basically gave us a line. 
 
 ![quad](https://developer.roblox.com/assets/blt6bac53c6c6f16b7b/Bezier2.gif)
 
-We know about 'anchor points', now I'd like to introduce to you 'control points'. In the above gif P1 is the control point. Naturally the curve formed is inclined towards the control point. A quadratic curve is formed by 2 anchor and 1 control points. Let's take a look at how quadratic curves are formed.
+We know about 'anchor points', now I'd like to introduce to you 'control points'. In the above gif P1 is the control point. Naturally the curve formed is inclined towards the control point. This control point influences the curvature of the line. A quadratic curve is formed by 2 anchor and 1 control points. Let's take a look at how quadratic curves are formed.
 
 Here, you have two anchor points P0 and P1 and one control point C0. P0 and P1 are connected to C0 with a line segment.
 
@@ -178,3 +178,15 @@ end
 ```
 
 # Conclusion
+
+This article was just a basic gist of Bézier Curves, how they are formed and the different kinds of curves. There are endless possibilities offered by these curves, you can have infinite amount of control points spread across a plane! Beautiful curves and art using these methods can be formed.
+
+There's a lot you can explore ahead but we'll end this here, I have listed some helpful resources below, do check them out. 
+Thanks for reading.
+
+# Resources
+
+[Wiki](https://en.wikipedia.org/wiki/B%C3%A9zier_curve)
+[Bézier Curves by Guidev](https://www.youtube.com/watch?v=pnYccz1Ha34&ab_channel=Guidev)
+[The Beauty of Bézier Curves by Freya Holmér](https://www.youtube.com/watch?v=aVwxzDHniEw&ab_channel=FreyaHolm%C3%A9r)
+[Bézier Curves by TheCodingTrain](https://www.youtube.com/watch?v=enNfb6p3j_g)
