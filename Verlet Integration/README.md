@@ -32,7 +32,7 @@ Verlet integration works on the basis of points that act as attachments and join
 
 We can use verlet integration to create custom physics engines.
 
-![](upload://4mTy9LhKWqrwxniCWoIXq0TvtYL.gif)
+![cloth](https://github.com/jaipack17/write-ups/blob/main/Verlet%20Integration/assets/cloth.gif?raw=true)
 
 <hr/>
 
@@ -256,7 +256,7 @@ We have our attachments and segments ready to render now! So lets try making a B
 
 We'll now use our Points and Segments to create a Box that clings to your cursor when you hold it and bounces off the edges! In this part of the tutorial, we'll create something the following:
 
-![crqQFPtH61 (online-video-cutter.com)|video](upload://bQYJ2G5D2pMSyLYSnwASBza49Zs.mp4)
+https://user-images.githubusercontent.com/74130881/134695653-dcf0972c-ebc5-4c8c-b5c4-46567aea178a.mp4
 
 This is nothing but 4 points connected with line segments :wink: 
 
@@ -298,7 +298,7 @@ local support = Segment.new(topLeft, bottomRight, true)
 
 Lets run this, And...
 
-![image|690x336](upload://bzsJfZKRPAAhaf3aNw4NfvsDd1z.png)
+![image](https://user-images.githubusercontent.com/74130881/134695706-9ebadc4c-3da9-4201-b2ce-e53a77c28c09.png)
 
 Hmm? There's nothing on the screen? You'll notice that we never really rendered the elements using :Draw(), so the points and segments remain at their initial position which in our case was 0, 0!
 
@@ -329,17 +329,17 @@ We use a TimeStep loop here, timesteps are used to render something multiple tim
 
 Now, lets run this!
 
-![Fw0aPVji1t (online-video-cutter.com)|video](upload://aF9PqwYtJ5EkH87uHJlapbHRsQW.mp4)
+https://user-images.githubusercontent.com/74130881/134695733-7cfce62c-83ea-405c-9d60-8a021d654b99.mp4
 
 Amazing! The points are visible in green, you can also see the support beam. The points uniformly fall down due to our segments pulling them to keep constant distance between the points!
 
 Selecting points and moving them around on the screen is fairly simple using UserInputService, so I won't be covering that. When you implement selection of points, you'll notice a smooth and realistic movement of the box on the screen, with the act of gravitational forces on the points and the beauty of Verlet integration you get this result:
 
-![IcHGXtKFnD (online-video-cutter.com)|video](upload://mzrdmoO52vNQg22OHSjwWyl1dji.mp4)
+https://user-images.githubusercontent.com/74130881/134695759-cb4001e1-cf47-4356-b840-19fae8c0210e.mp4
 
 If it feels to bobbly, you can add another support beam which connects the topright corner and bottom left corner of the box:
 
-![8EQPakWy6n (online-video-cutter.com)|video](upload://p3ZB4uCJ17jrUrsqQRmow5f1sUL.mp4)
+https://user-images.githubusercontent.com/74130881/134695786-230d7ca4-c2a8-4b21-bb91-557855982489.mp4
 
 Looks great to me! You can play around with points and segments to create other kinds of quadrilaterals and even polygons with more or less than 4 sides!
 
@@ -354,13 +354,13 @@ Firstly, something I forgot to explain above, How do OBB Collisions in Verlet In
 
 Here's how:
 
-![image|598x500](upload://ujSiG3yvXynGFMc2yYy5lO3Uz0n.png)
+![image|598x500](https://doy2mn9upadnk.cloudfront.net/uploads/default/optimized/4X/d/4/8/d480643999323749376b2f2b0a53f74c2cfb6293_2_897x750.png)
 
 When a point collides with the edges of the screen, a bounce force is applied to it. Which naturally causes a change in its position and the line segment's position! Hence, faking OBB Collisions when rendering!
 
 Now, to the next point. How exactly did I connect the points to make it look like a human? Here's a rig of all the joints (points) and bones (segments)!
 
-![image|379x499](upload://ynvm6N856u20RCB4WBj6T0okCZe.png)
+![image|379x499](https://doy2mn9upadnk.cloudfront.net/uploads/default/optimized/4X/f/0/f/f0f22196276ea27eed19a31abe489da67aef420c_2_568x748.png)
 
 *Yeah, I know they are the most perfectly straight lines ever seen.*
 
@@ -370,7 +370,7 @@ Then, using UserInputService I make the points selectable and draggable! Verlet 
 
 Here's the ragdoll in action:
 
-![V6HjJ7PwOU (online-video-cutter.com)|video](upload://6aP6FonSvyinHxe0y2Y5rFsXumD.mp4)
+https://user-images.githubusercontent.com/74130881/134695893-4fef48cf-0425-4a07-b580-8e6f4041c7d1.mp4
 
 If you would like to take a glimpse at the code behind this ragdoll, feel free to view it and edit it! It can be found in the placefile below:
 
