@@ -9,8 +9,9 @@
 * [Linear Interpolation](#linear-interpolation)
 * [Linear Bézier Curve](#linear-bézier-curve)
 * [Quadratic Bézier Curve](#quadratic-bézier-curve)
-* Cubic Bézier Curve(#cubic-bézier-curve)
-* Resources
+* [Cubic Bézier Curve](#cubic-bézier-curve)
+* [Conclusion](#conclusion)
+* [Resources](#resources)
 
 # Overview
 Bézier curves are widely used by many mathematicians, software engineers, computer graphics engineers, designers and other professional individuals in their work. They are one of the most famous curves and their formation is immensely easy to understand for newbies. The curves, which are related to Bernstein polynomials, are named after French engineer Pierre Bézier, who used it in the 1960s for designing curves for the bodywork of Renault cars. The formation of Bézier curves is quite interesting. 
@@ -126,4 +127,54 @@ end
 
 # Cubic Bézier Curves
 
-Cubic curves are very similar to Quadratic curves, but this time we use two control points C0 and C1 instead of 1. A cubic curve is a combination of two Quadratic curves.
+Cubic curves are very similar to Quadratic curves, but this time we use two control points C0 and C1 instead of 1. A cubic curve is a combination of two Quadratic curves. Let's take two anchor points P0 and P1, and two control points C0 and C1:
+
+![image](https://user-images.githubusercontent.com/74130881/134650840-62566db7-22ee-4aa9-b11a-a282f8f957a4.png)
+
+The blue arrows denote the direction of the base linear interpolations that will take place. If we make a quadratic curve out of P0, C0 and C1, and then make a quadratic curve out of C0, C1 and P1. We see two light green lines formed. We then lerp both of these lines and connect them with a line segment, then we lerp this line segment, which in the image below is dark green in color. The point we get is denoted by the peach color in the image below. That explaination was a bit janky but I hope you grasped something off of that.
+
+![image](https://user-images.githubusercontent.com/74130881/134651989-19a2c602-705f-4101-a142-82bf77f32d8c.png)
+
+Let's take a look at this in action:
+
+![ezgif com-gif-maker (8)](https://user-images.githubusercontent.com/74130881/134652787-f192358e-7452-4c74-93da-68e2fccdf08b.gif)
+
+We can thus write it in the form of expressions and pseudocode.
+
+Lerping P0 - C0, C0 - C1 and C1 - P1
+
+![image](https://user-images.githubusercontent.com/74130881/134653425-a743cc7d-630c-4ab8-8771-f8b893c82c96.png)
+
+Forming 2 quadratic curve points:
+
+![image](https://user-images.githubusercontent.com/74130881/134653753-c2871245-648d-423e-b93c-72f0594ec87f.png)
+
+Forming the cubic curve way points using quad1 and quad2:
+
+![image](https://user-images.githubusercontent.com/74130881/134653897-0b8a3f54-f376-48c0-92a5-fafe03c37a72.png)
+
+Note that the value of t for all interpolations remain equal throughout. We can further simplify this into 1 single expression:
+
+![image](https://user-images.githubusercontent.com/74130881/134654029-c47abfcf-3332-40f5-989c-25cc3a168b8e.png)
+
+```lua
+p0 = (x, y);
+p1 = (x, y);
+c0 = (x, y);
+c1 = (x, y)
+t = 0;
+
+function lerp(t)
+   return (1 - t) * p0 + t * p1
+end
+
+for t until t == 1, increment by 0.01 do 
+   quad1 = lerp(lerp(p0, c0, t), lerp(c0, p1, t), t)
+   quad2 = lerp(lerp(c0, c1, t), lerp(c1, p1, t), t)
+
+   cubic = lerp(quad1, quad2, t)
+   drawPointAt(cubic)
+end
+```
+
+# Conclusion
