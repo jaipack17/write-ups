@@ -136,10 +136,6 @@ Cubic curves are very similar to Quadratic curves, but this time we use two cont
 
 The blue arrows denote the direction of the base linear interpolations that will take place. If we make a quadratic curve out of P0, C0 and C1, and then make a quadratic curve out of C0, C1 and P1. We see two light green lines formed. We then lerp both of these lines and connect them with a line segment, then we lerp this line segment, which in the image below is dark green in color. The point we get is denoted by the peach color in the image below. That explaination was a bit janky but I hope you grasped something off of that.
 
-![image](https://user-images.githubusercontent.com/74130881/134651989-19a2c602-705f-4101-a142-82bf77f32d8c.png)
-
-Let's take a look at this in action:
-
 ![ezgif com-gif-maker (8)](https://user-images.githubusercontent.com/74130881/134652787-f192358e-7452-4c74-93da-68e2fccdf08b.gif)
 
 We can thus write it in the form of expressions and pseudocode.
