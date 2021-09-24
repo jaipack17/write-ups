@@ -47,3 +47,11 @@ We have a basic idea on how we'll get these points, lets write it in the form of
 ![formula](https://github.com/jaipack17/write-ups/blob/main/B%C3%A9zier%20Curves/assets/formula.JPG?raw=true)
 
 Yep, it's that simple. So what's happening here? Here P0 and P1 are vector values that consist of x and y. Lets take an example. Let P0 be (0, 0) and P1 be (2, 2). We add the difference of the positions of P1 and P0, multiply it with t to get the t'th% vector position and add it to the position of P0. This is basically the unitary method! Lets take P0 as (0, 0) and P1 as (2,2), the same example we took earlier, and take t as 0.5 which essentially gives us the mid point of the line. Which you may already assume as (1, 1) right? Well lets find out.
+
+![example](https://github.com/jaipack17/write-ups/blob/main/B%C3%A9zier%20Curves/assets/example.JPG?raw=true)
+
+The difference of P0 and P1 is (2, 2), multiply (2, 2) with 0.5, which gives us (2 * 0.5, 2 * 0.5) which is (1, 1). Ultimately add this to P0 which gives us (0, 0) + (1, 1) = (1, 1). Amazing! We now have the mid point of the line. This should work in all cases as long as t = real number between 0 and 1! Ultimately, after simplying the above expression we can rewrite it as:
+
+
+
+# Linear Bézier Curve
