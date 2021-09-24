@@ -63,8 +63,8 @@ A Linear Bézier curve is not really a curve, but a straight line formed using t
 The pseudocode for the above simulation is:
 
 ```lua
-p0;
-p1;
+p0 = (x, y);
+p1 = (x, y);
 t = 0;
 
 function lerp(t)
@@ -76,3 +76,6 @@ for t uptil 1, increment by 0.01 do
    drawPointAt(point)
 end
 ```
+
+The above pseudocode increase the value of t by 0.01 and draws a point at the lerped position giving us the simulation of the gif. You may increment t by numbers like 0.1, 0.001 etc which'll give you different sorts of results *depending on how low the value is, it hurts performance but gives a smoother line*
+
