@@ -179,7 +179,7 @@ end
 
 # Conclusion
 
-This article was just a basic gist of Bézier Curves, how they are formed and the different kinds of curves. There are endless possibilities offered by these curves, you can have infinite amount of control points spread across a plane! Beautiful curves and art using these methods can be formed. Here's an amazing simulation I found, [Synthwave Visualizer by Prof Sears](https://editor.p5js.org/Prof-Sears/full/3zStiATFL)
+This article was just a gist of Bézier Curves, how they are formed and the different kinds of curves. There are endless possibilities offered by these curves. You can have infinite amount of control points spread across a plane! Beautiful curves and art using these methods can be formed. Here's an amazing simulation I found, [Synthwave Visualizer by Prof Sears](https://editor.p5js.org/Prof-Sears/full/3zStiATFL)
 
 There's a lot you can explore ahead but we'll end this here, I have listed some helpful resources below, do check them out. 
 Thanks for reading.
