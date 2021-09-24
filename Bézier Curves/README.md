@@ -8,7 +8,7 @@
 * [Prerequisites](#prerequisites)
 * [Linear Interpolation](#linear-interpolation)
 * [Linear Bézier Curve](#linear-bézier-curve)
-* Quadratic Bézier Curve
+* [Quadratic Bézier Curve](#quadratic-bézier-curve)
 * Cubic Bézier Curve
 * Resources
 
@@ -102,4 +102,24 @@ Notice the point Q0? If you haven't already, look at it closely, doesn't it move
 
 ![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/74130881/134647483-42c13365-ea29-4512-a1a1-8139ede5815f.gif)
 
-It does infact form a curve! This is a quadratic bezier curve.
+It does infact form a curve! This is a quadratic bezier curve. Looking back to how we started, we lerped the first two line segments with t and lerped the segment connected to the two points we received after lerping, with the same percentage value (t). We can write it in the form of an expression and pseudocode as follows:
+
+![image](https://user-images.githubusercontent.com/74130881/134648644-db3b4004-d376-432d-9f5d-e9f9d340d50b.png)
+
+```lua
+p0 = (x, y);
+p1 = (x, y);
+c0 = (x, y)
+t = 0;
+
+function lerp(t)
+   return (1 - t) * p0 + t * p1
+end
+
+for t until t == 1, increment by 0.01 do 
+   point = lerp(lerp(p0, c0, t), lerp(c0, p1, t), t)
+   drawPointAt(point)
+end
+```
+
+# Cubic Bézier Curves
