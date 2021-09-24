@@ -26,7 +26,7 @@ When it comes to moving characters, objects, vehicles and other autonomous objec
 
 Steering behaviors help us control objects in the world like actual human beings. The ability to give objects human like physics and eyesight is a huge deal and a fascinating concept for many. These steering behaviors are tricky to crack but with the help of RayCasting and a few algorithms by Craig Reynolds, we can together figure them out! Today we'll be taking a peak inside these Steering Behaviors and making something cool!
 
-![xd](upload://mn1qlBU0LBzPTggltWW91rS6quD.gif)
+![flock](https://github.com/jaipack17/write-ups/blob/main/Steering%20Behaviors/assets/flock.gif?raw=true)
 
 > Source
 https://www.red3d.com/cwr/steer/
@@ -59,7 +59,7 @@ Seek attempts to steer a vehicle so that it moves toward the goal. This is in co
 
 In simple words, make the object steer towards a goal
 
-![](upload://zzRRSmK94Zx9brMTtOsP6wUtfoa.gif)
+![seek and flee](https://github.com/jaipack17/write-ups/blob/main/Steering%20Behaviors/assets/seek%20and%20flee.gif?raw=true)
 
 We'll create a "Mover" module which will contain all the functions for each steering behavior we code.
 
@@ -87,7 +87,7 @@ This mover has a frame, a velocity, constant acceleration and a position. To cod
 
 *`steeringForce = desiredVelocity - velocity`*
 
-![image|690x163](upload://iZc66RcAc3mCbDP5MXmdsXUNEAO.png)
+![image|690x163](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/8/5/1/8512039ac09458f19ca005f1caa8b358fc7ee3a2.png)
 
 We apply the steeringForce to the object, which changes its velocity over time. Lets code this out!
 
@@ -132,7 +132,7 @@ We take in three parameters. A goal, which the object will be moving to and a sp
 
 To test this out, every frame I set the goal to be the mouse's position on the screen! I have a circle on a canvas which will act as the Mover:
  
-![image|690x333](upload://7StmXT5WTaFEwsV2mgnhgI8wGMD.png)
+![image|690x333](https://doy2mn9upadnk.cloudfront.net/uploads/default/optimized/4X/3/7/3/3737980ecbfb257cf043129dcaa1db329e16c6ef_2_1035x499.png)
 
 Here's the result!
 
