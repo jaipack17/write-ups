@@ -29,3 +29,6 @@ Bézier curves are formed using nested/multiple Linear Interpolations. Let's und
 # Linear Interpolation
 
 Initially in this article, I introduced a new term for some of you, "Linear Interpolation". Linear Interpolation or in short lerp, is a mathematical method for finding way points on a straight ray, line segment or line. If two points are known, infinite points can be calculated on a straight path connected to these two points. We refer these 2 points as 'anchor points'. We'll see how Bézier curves make the use of Linear Interpolation.
+
+Suppose you have a line segment with two endpoints P0
+
