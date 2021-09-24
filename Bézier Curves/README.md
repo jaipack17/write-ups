@@ -84,3 +84,23 @@ The above pseudocode increase the value of t by 0.01 and draws a point at the le
 Previously we looked into Linear Bézier curves which basically gave us a line. Now to the curve, a quadratic curve looks something like the following:
 
 ![quad](https://developer.roblox.com/assets/blt6bac53c6c6f16b7b/Bezier2.gif)
+
+We know about 'anchor points', now I'd like to introduce to you 'control points'. In the above gif P1 is the control point. Naturally the curve formed is inclined towards the control point. A quadratic curve is formed by 2 anchor and 1 control points. Let's take a look at how quadratic curves are formed.
+
+Here, you have two anchor points P0 and P1 and one control point C0. P0 and P1 are connected to C0 with a line segment.
+
+![image](https://user-images.githubusercontent.com/74130881/134644549-54fc4fb2-670b-4eda-a1b7-b67d78e41467.png)
+
+What if we lerp each line? We lerp line segment P0 - C0 and line segment C0 - P1. Here's a simulation of the lerps:
+
+![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/74130881/134646038-37ed5564-eb69-406c-9890-9e6aa22a0b7c.gif)
+
+Sick, but what do we do about these two lerps? Well... What if we connect each point we get on the two lines with a line segment, and then lerp this line segment with the same t value as the others? Woo, lets check it out.
+
+![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/74130881/134646788-8505e8e9-5578-4494-a075-4d65088befd7.gif)
+
+Notice the point Q0? If you haven't already, look at it closely, doesn't it move along a curvy imaginary path? Well, what if we compute its moving path!
+
+![ezgif com-gif-maker (7)](https://user-images.githubusercontent.com/74130881/134647483-42c13365-ea29-4512-a1a1-8139ede5815f.gif)
+
+It does infact form a curve! This is a quadratic bezier curve.
