@@ -136,7 +136,7 @@ To test this out, every frame I set the goal to be the mouse's position on the s
 
 Here's the result!
 
-![2L3u4vDuSZ (online-video-cutter.com)|video](https://github.com/jaipack17/write-ups/blob/main/Steering%20Behaviors/assets/2L3u4vDuSZ%20(online-video-cutter.com)%20(2).mp4?raw=true)
+![2L3u4vDuSZ (online-video-cutter.com)](https://github.com/jaipack17/write-ups/blob/main/Steering%20Behaviors/assets/2L3u4vDuSZ%20(online-video-cutter.com)%20(2).mp4?raw=true)
 
 <hr/>
 
@@ -181,7 +181,7 @@ end
 
 Here we take in another argument called Arrival Radius. If the object enters this radius, it's speed starts to deplete and eventually comes to rest.
 
-![DhKrVuuu9Y (online-video-cutter.com)|video](upload://h6c81x8euwVl7Apeb7QyqLbYdVq.mp4)
+https://user-images.githubusercontent.com/74130881/134693129-e5b313f6-010d-4ef3-80ac-0160cecb3283.mp4
 
 <hr/>
 
@@ -191,7 +191,7 @@ Pursuing is the process of following a target and aiming to catch it. Imagine yo
 
 [image](https://cdn.tutsplus.com/cdn-cgi/image/width=800/gamedev/authors/legacy/Fernando%20Bevilacqua/2012/11/30/pursuit_avoid_route.png)
 
-![image|400x200](upload://r2qScsuf7RZllYiX0yNGikpMFsB.png)
+![image|400x200](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/b/d/8/bd811dffdeb1b8c55f1c62dcdd4328c1d7ca28a1.png)
 
 How would we possibly simulate this?
 
@@ -217,7 +217,7 @@ newMover:Pursue(target, 6, .1)
 
 And.. Lets take a look at how the mover pursues a target!
 
-![cWXJeofz9q (online-video-cutter.com)|video](upload://fWraSV4NF3lR43uOs6KW5wd2X0p.mp4)
+https://user-images.githubusercontent.com/74130881/134693229-1aee905f-1379-4dbc-af43-f904f9779c49.mp4
 
 Amazing! The pursuer pursues the target by steering 100 pixels in front of the target in the direction the target is facing!
 
@@ -227,7 +227,7 @@ Amazing! The pursuer pursues the target by steering 100 pixels in front of the t
 
 Its quite the opposite of Pursue. Instead of pursuing the target, we avoid it. And to do this, we simply multiply the desired velocity by -1, just how we did it for Flee.
 
-![image|274x184](upload://8kAaqj5igIoGaFnCeMJZOQOX0Gu.png)
+![image|274x184](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/3/a/6/3a6509f57348d311c6ca09832baff29d42fcf912.png)
 
 
 ```lua
@@ -237,7 +237,7 @@ local steeringForce = (desiredVelocity - self.velocity)
 
 Lets see this in action:
 
-![ael0qiqkSQ (online-video-cutter.com)|video](upload://1A7kWMGNsOL4DPKWAREHaLl7KVM.mp4)
+https://user-images.githubusercontent.com/74130881/134693321-36d27326-983e-4b7a-af49-49309caf07c6.mp4
 
 You can see how its evading the target.
 
@@ -248,6 +248,9 @@ This steering behavior is extremely helpful for simulating cars and npcs that wa
 
 ![6zMEXUL7CS (online-video-cutter.com)|video](upload://ad7IU4iXsuJLsqOWT6NJnx7tYFy.mp4)
 ![Uzl5vI3d15 (online-video-cutter.com)|video](upload://8uipke7VfXdAXCIpI7ZzfJK3vAa.mp4)
+
+https://user-images.githubusercontent.com/74130881/134693357-2da69ed7-79dd-4bff-ad9a-4fd010a798ba.mp4
+https://user-images.githubusercontent.com/74130881/134693365-c92f0606-34cb-4b75-a0c4-8b015e92cb6e.mp4
 
 How this works:
 
@@ -448,7 +451,7 @@ So we get the steering Force and then steer the movers accordingly.
 
 You can see how I am controlling the red target with my mouse and the white pursuer is pursuing the target! Ooo, how helpful would this be for car chases! Might do a tutorial on that soon!
 
-![fmASaqqGlQ (online-video-cutter.com)|video](upload://uewBNgUyZflrAITovKCL4znEVC0.mp4)
+https://user-images.githubusercontent.com/74130881/134693412-5409f6a4-2987-4b08-b403-e4faaf49837e.mp4
 
 It. is. time.
 
@@ -460,13 +463,13 @@ Imagine yourself going to mcdonalds to buy a tasty burger. You see a huge line o
 
 You'll notice, gradually the line gets bigger and bigger as many people come to the store. But the people in the front, who bought their burgers, move out. This, is grouping. Take this visual example:
 
-![image|690x413](upload://clZsUiRYJgLuwO46mdktfmTek77.png)
+![image|690x413](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/5/6/9/56967b1b0c28dd6926506062cd5a1ff294cccf89.png)
 
 How would we simulate this? We'll combine a few Steering Behaviors that we made and create this simulation!
 
 Firstly lets understand how two different objects will steer towards the same direction:
 
-![image|690x328](upload://46tVnNrq2xBu5jqHxUu5FFCv0mh.png)
+![image|690x328](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/1/c/c/1cc44b132eaf31e0575d7b297dcde4dd21e9a46d.png)
 
 Two movers with velocities v1 and v2 are moving in some direction. We need to adjust the velocity, such that both movers steer and move towards 1 direction.
 
@@ -494,11 +497,11 @@ end
 game:GetService("RunService").RenderStepped:Connect(Assemble)
 ```
 
-![image|690x335](upload://zLRH5i0LeIIdK1xXmyF3r8VxJf3.png)
+![image|690x335](https://doy2mn9upadnk.cloudfront.net/uploads/default/optimized/4X/f/a/b/fab5401ded584e98e380b31af6ad13103d4e1e21_2_1035x502.png)
 
 I have eight of these movers seeking 1 single target. But when we run this, you'll notice that they just overlap each other.
 
-![xzolF5XcCK (online-video-cutter.com)|video](upload://pitH0SbtCGQwSHiAlRn2BrEg2aw.mp4)
+https://user-images.githubusercontent.com/74130881/134693578-a6c14c4b-8f5f-4ebb-826e-fe648eb706ac.mp4
 
 We need to detect collisions and slow the movers down accordingly.
 
@@ -536,7 +539,7 @@ NOTE: this only works for perfect circles. For example a 40x40 circle which has 
 
 Running this gives us the following, you can see how they are kinda keeping a distance between each other and moving in a line.
 
-![3uV1roKJxF (online-video-cutter.com)|video](upload://5fKQUWfcDVWmgVIuTJIFUjIrXvQ.mp4)
+https://user-images.githubusercontent.com/74130881/134693597-031c507e-89b5-40a7-a0a5-e2d4c872ed23.mp4
 
 There are several ways you could be doing this. If they are in a given radius, you can make them Flee the other mover. But that may not give perfect results. You can use Pursue to adjust their positions as well! You can even give them an eyesight using [RayCast2](https://github.com/jaipack17/RayCast2/blob/main/RayCast2.lua) and steer them accordingly!
 
@@ -544,12 +547,10 @@ This was a very basic example of how grouping works. You'll notice that we aren'
 
 You can even create stuff like this, using Steering Behaviors, although this isn't made with Steering Behaviors but you surely can! 
 
-![collision response ‐ Made with Clipchamp (2)|video](upload://duPDDdVzAqXMlfz60hng99ALJtA.mp4)
-
-**[Also read](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/3)**
+https://user-images.githubusercontent.com/74130881/134693653-176972f6-2e01-4b74-8c37-44f82ae23a40.mp4
 
 <hr/>
 
 ## Conclusion
 
-I hope you understood what Steering Behaviors are and how you can script them in roblox to make awesome stuff. I hope this helped, have fun! :+1:.
+I hope you understood what Steering Behaviors are and how you can script them in roblox to make awesome stuff. I hope this helped, have fun!
