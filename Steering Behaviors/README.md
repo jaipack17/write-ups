@@ -6,7 +6,7 @@
 <hr/>
 
 ## Table of Contents
-* [Preface -  What are Steering Behaviors?](#Preface -  What are Steering Behaviors?)
+* [Preface - What are Steering Behaviors?](#preface---what-are-steering-behaviors?)
 * [Coding Steering Behaviors](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#coding-steering-behaviors-3)
     * [Seek Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#seek-steering-behavior-4)
     * [Flee Steering Behavior](https://devforum.roblox.com/t/introduction-to-steering-behaviors/1441680/1#flee-steering-behavior-5)
@@ -20,7 +20,7 @@
 
 <hr/>
 
-# Preface -  What are Steering Behaviors?
+# Preface - What are Steering Behaviors?
 
 When it comes to moving characters, objects, vehicles and other autonomous objects in a natural and realistic fashion, we use Steering Behaviors. In the early 1990s, computer scientist [Craig Reynolds](http://www.red3d.com/cwr) developed algorithmic steering behaviors for autonomous agents. These behaviors allowed individual elements to navigate their digital environments with strategies for seeking, fleeing, wandering, arriving, pursuing, evading, avoiding an obstacle, following a path. 
 
