@@ -17,13 +17,13 @@ Before we steer towards two dimensional collisions, I'd like to take some time t
 
 Lets start with Circle to Circle collisions. To detect collisions between the two, we'll use a standard method that's widely used in development. As you know, the distance from the Center to the boundary of the circle is equal to its radius. To detect collisions between the two all we need to check is, if the distance between the centers of the two circles is less than the sum of the radiuses of both circles, if yes then the two circles are said to be colliding. Its that simple!
 
-![image|500x194](upload://pnQxNXyfzHczI8iWXE543eV5KGt.png)
+![image](https://user-images.githubusercontent.com/74130881/135019216-e20faabe-5e7b-41f8-84b5-0fdeeaaf86d9.png)
 
 Collision response is nothing but what we do after we have checked if the two circles are colliding. This can be carried out by different ways here. Thankfully, if the masses of both circles are equal, all we have to do is interchange the velocities of the circles. In the other case, if the masses of both circles are different. We use the standard equation of Newton's 3rd law of motion to find the velocities of both circles after collision.
 
-![image|343x91](upload://8hnAEG0kD2tF63xc2Wui1RDvrgx.png)
+![image|343x91](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/3/a/0/3a085a92dbb3498825d9d0f6cb11c79bfcfee685.png)
 
-![image|352x70](upload://ffT0XBNqxS5nmMj27DFkyxYXTI0.png)
+![image|352x70](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/6/a/e/6aec5cb7f6eadb5c5b0990051bba666a93e3bccc.png)
 
 This method is generally used to simulate natural elastic collisions, but if you'd like to go for a more game like collision simulation. You could use another way to repond to these collisions. We use the same old method to detect collisions but we'll return some additional information rather than just a boolean. We'll return the magnitude of the area where both circles overlap, moreover the Collision penetration depth.
 
