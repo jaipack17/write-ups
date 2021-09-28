@@ -27,7 +27,7 @@ Collision response is nothing but what we do after we have checked if the two ci
 
 This method is generally used to simulate natural elastic collisions, but if you'd like to go for a more game like collision simulation. You could use another way to repond to these collisions. We use the same old method to detect collisions but we'll return some additional information rather than just a boolean. We'll return the magnitude of the area where both circles overlap, moreover the Collision penetration depth.
 
-![image|196x196](upload://dyzAmzjzc3CFBUme7hVWFVHMps.png)
+![image|196x196](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/0/1/8/018855c615ea308f3431a0d4d460ca8eb3968e02.png)
 
 We can write it in the form of pseudocode as:
 
@@ -54,7 +54,7 @@ We can apply the same equation for both circles in opposite directions and they'
 
 [Media Source](https://teaching.smp.uq.edu.au/scims/Calculus/Collisions.html)
 
-![](upload://3S5KtwhRgJmWN5bFHBCMupRqAnX.gif)
+![gif](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/1/b/2/1b23df8817f886723aa23ecac431e5fc5b8c9b3d.gif)
 
 That's it for 1 Dimensional Circle to Circle collisions. Square to Square collisions won't take much time since we already have a base setup. 
 
