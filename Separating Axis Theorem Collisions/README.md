@@ -141,7 +141,7 @@ This could be helpful to create pong games **`:)`**
 
 Thankfully, it isn't as hard as you thought it is! Initially we discussed about one dimensional circle collisions, well, its the same! But here, the velocity will have to do with both x and y axes! You might have seen one of my devlogs on a physics engine I was making, it looked something like this:
 
-![physics and math stuff - Imgur (3)|video](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/3/f/0/3f01469273a98d237c35de40896470f72aae50ec.mp4)
+![physics and math stuff - Imgur (3)](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/3/f/0/3f01469273a98d237c35de40896470f72aae50ec.mp4)
 
 Now here, you may notice, a gravitational force is applied on the bodies pulling them towards the ground. The problem with the formula we used to respond the collisions won't work with gravitational forces or any external forces acting on the ball since we ignore those forces when calculating the final velocities of the ball. To counter this problem, I used trigonometry! 
 
@@ -315,7 +315,7 @@ E2.pos -= CollisionVector * (t * factor/2)
 
 That's it! You now have smooth collisions between rigid bodies with 'n' number of sides!
 
-![F7pEXB5LUu (online-video-cutter.com)|video](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/f/6/f/f6fd68a8b2cfb00a284f9b1270dfa336b738ad60.mp4)
+![F7pEXB5LUu (online-video-cutter.com)](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/f/6/f/f6fd68a8b2cfb00a284f9b1270dfa336b738ad60.mp4)
 
 Once again, it is important to note that this would work accurately only for convex shapes, if you end up using concave shapes, the algorithm would end up using them as convex shapes:
 
