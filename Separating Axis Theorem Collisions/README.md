@@ -66,7 +66,7 @@ If we know the Top Left corner of each square. (In our case, the AbsolutePositio
 
 We could see if they collide by checking if the SquareB.TopLeft.X is less than SquareA.TopLeft.X + Side.Length and vice-versa!
 
-![image|690x370](upload://8xNyRjPNgTjjiFxKhmRhmd1f35K.png)
+![image|690x370](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/3/b/e/3be37d03444dbdaaa708339240ec887370accf68.png)
 
 We can write it down as:
 
@@ -90,7 +90,7 @@ Beginning with 2D collisions, I'd like to discuss the most basic method of respo
 
 We check if the body comes in contact with any boundary of the screen, the top, bottom, left and right edge. If it does, first we correct the body's position. And by that I mean, if the body goes past the edge, we bring the body back in the enclosed space, and then all we do is reverse X or Y coordinate of the body's velocity depending upon the edge it collides with! If it collides with the top or bottom edge, we reverse velocity.y, else we reverse velocity.x! The figure below shows the change in the object's velocity when it collides with the left edge of the screen
 
-![image|690x360](upload://cG7cfE1PEAmnG7SPEzQfUJkfnzX.png)
+![image|690x360](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/5/8/d/58dcdaf2869bc7b34b8a4a3a53461d7c301c1ab9.png)
 
 We'll take a simple example of a circle and the left edge. Let's write it down in the form of code!
 
@@ -122,7 +122,7 @@ function BoundaryCollisions(body)
      end
 end
 ```
-![ezgif.com-gif-maker (9)|600x308](upload://1bEtCY8ZwPHQgUvMRaESgFFHKJS.gif)
+![ezgif.com-gif-maker (9)|600x308](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/0/8/5/0853635890013b71613b31521e55c159ca38e7ec.gif)
 
 Look's nice, if it was a square, you would have to do the following:
 
@@ -141,7 +141,7 @@ This could be helpful to create pong games **`:)`**
 
 Thankfully, it isn't as hard as you thought it is! Initially we discussed about one dimensional circle collisions, well, its the same! But here, the velocity will have to do with both x and y axes! You might have seen one of my devlogs on a physics engine I was making, it looked something like this:
 
-![physics and math stuff - Imgur (3)|video](upload://8ZmOs4cycoAoO16meBiJWs6Q2f2.mp4)
+![physics and math stuff - Imgur (3)|video](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/3/f/0/3f01469273a98d237c35de40896470f72aae50ec.mp4)
 
 Now here, you may notice, a gravitational force is applied on the bodies pulling them towards the ground. The problem with the formula we used to respond the collisions won't work with gravitational forces or any external forces acting on the ball since we ignore those forces when calculating the final velocities of the ball. To counter this problem, I used trigonometry! 
 
@@ -171,13 +171,13 @@ We'll look into a mathematical theorem which goes by the name of "Separating Axi
 
 The theorem states that two bodies don't collide, as long we are able to put a straight line between the two, that doesn't intersect either body. This should be easy to make the use of, but there is a downside to it. While it may be performant, it works only for Convex Shapes. If either of the body was a Concave shape, this theorem won't be too accurate with collision detection. The image below should clear it up for you.
 
-![image](upload://unv9eotMPqIwja9HpABY2303EpR.png)
+![image](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/d/4/e/d4e9569ffd6db3029cc3c27f687263d9f20d3eeb.png)
 
 In Figure 1, both bodies are Convex polygons and do not collide. While, in Figure 2, one of the bodies is a Concave polygon. Both bodies appear to be free of any collisions but since the line intersects 1 of the bodies by this theorem, they are said to be colliding even though they are not. This shouldn't be too big of a problem unless its a large scale project. 
 
 Now onto detecting collisions. We use something called a 'projection' of the two bodies. Let there be another line named the 'axis' which is perpendicular to the Separating line (line in between the two bodies). We can now project the bodies onto this perpendicular. IF the separating line intersect either of the projections, the bodies are said to be colliding. We do not need to worry about where we create the project (left or right), since the projection ultimately is no longer 2 dimensional, rather 1 dimensional. 
 
-![Webp net-resizeimage](upload://eJS371tiZsZqTM9Aiv17oI66CWp.png)
+![Webp net-resizeimage](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/6/7/4/674de2e887b0bc9db8d411bb506bbb4f82bae2ed.png)
 
 The pseudocode (lua) below is used to make the projection of a body onto the Axis. `vertices` is the array containing all verticies of the body. We loop through each point and project it to the axis. `min` and `max` values are set to be the dot product of the Axis and the Vertex after being compared to already existing min and max values. We then update min and max values to appropriate results of the projection. In every case, the 2 points farthest to each other are projected. Or in short, the projection in 2 dimensions is the dot product of the projection axis and the vertex we project.  
 
@@ -198,7 +198,7 @@ function CreateProjection(Axis)
 end
 ```
 
-![image](upload://8lpxGGPVKSlrxCR3hBFEtI6t6Vr.png)
+![image](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/3/a/7/3a7d04a33d652c48663d2e64fc968552dda1b739.png)
 
 All that is left for Collision detection is loop through the edges of the bodies, calculating the axis to project the points on, based on the endpoints of the edge, project the points on the axis, and simply checking if the projections overlap each other i.e the separating line intersect either of the projections.
 
@@ -228,7 +228,7 @@ function Colliding(body1, body2)
 end
 ```
 
-![image](upload://1XxLnozSMcvAN3zy0cPETh8ZJeY.png)
+![image](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/0/d/b/0dbd4ad8d8e7bce8e10f4c2abb2ee043457cd38c.png)
 
 We know if the two bodies collide with each other, but how exactly do we respond to this collision and separate them from each other? We'll make the use of The Penetration Depth of the collision and return crucial information which we can use to separate the two shapes! We can further edit the code to say the following:
 
@@ -281,11 +281,11 @@ info.vertex.pos += penetrationVector/2
 
 For moving the edge, we'll first need to find the closest point of the edge to the vertex of the other body! Reason being, we'll move the vertices of the edges, to simulate natural collisions, if the vertex collides with the edge while being closer to the "bottom/second" vertex of the edge, more force will be applied to the bottom vertex of the edge! Here's a little example of what I mean by the same.
 
-![image|690x340](upload://c1Ql0ub2HFm8azUrK1L6mSkJDMj.png)
+![image|690x340](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/5/4/4/544f7473ba4f5a1aa6ae6c0ba81bfb447815fce7.png)
 
 We can do that by the standard equation:
 
-![image|86x51](upload://i4CNXejjnMJWLNHeuYjMacjRiKG.png)
+![image|86x51](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/7/e/a/7eacff3e312943c5385127280641fac2d85bac1e.png)
 
 t is a percentage value of a point which lies on the edge depicting where the vertex collides with the edge. E1 and E2 are vertices of the edge and V is the vertex of the other body. This is related to Linear Interpolation. Lets jot the above into code:
 
@@ -303,7 +303,7 @@ end
 
 Using the t value we can calculate a scaling factor that ensures that the collision vertex lies on the collision edge after the collision response. Using:
 
-![image|115x55](upload://bpVULjwaw6tjJubA2z0Xjsc2PHm.png)
+![image|115x55](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/5/0/0/5006671cc40b99967e05a4015d9b7ae72c3654bc.png)
 
 Then move the vertices of edges according to the factor. Half the force is applied in the opposite direction (of the force applied to the vertex of the other body)
 
@@ -315,15 +315,15 @@ E2.pos -= CollisionVector * (t * factor/2)
 
 That's it! You now have smooth collisions between rigid bodies with 'n' number of sides!
 
-![F7pEXB5LUu (online-video-cutter.com)|video](upload://zeYnMGiHnbDsnRV3rNCvstMEjqE.mp4)
+![F7pEXB5LUu (online-video-cutter.com)|video](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/f/6/f/f6fd68a8b2cfb00a284f9b1270dfa336b738ad60.mp4)
 
 Once again, it is important to note that this would work accurately only for convex shapes, if you end up using concave shapes, the algorithm would end up using them as convex shapes:
 
-![image|690x261](upload://rf2qEijPsuqM8psR125PaKe3Bmx.png)
+![image|690x261](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/b/e/e/beede7d71549f86387a6977c56546265a86e1311.png)
 
 In order to add concave shapes support, you'll have to figure out an algorithm which divides a single body into different segments. 
 
-![image|690x294](upload://tkXNE9z0VJxDBwTBlZfxC7i6vAH.png)
+![image|690x294](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/c/d/9/cd9db902df95d2c9b3c0dab51626461eadb6226f.png)
 
 After dividing them into different convex bodies, we can run the same checks we did above and find out if two bodies collide or not!
 
@@ -353,11 +353,11 @@ Let's take an example, here's a comparison of a lot of collisions are taking pla
 
 **Without timsteps:**
 
-![ezgif.com-gif-maker (10)|600x143](upload://hi4cd8JHPWFBs9zW1ldUhlDs5DP.gif)
+![ezgif.com-gif-maker (10)|600x143](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/7/9/2/792fce3c5224a72d9248b5d9c8117c62bbc032e9.gif)
 
 **With timesteps:**
 
-![ezgif.com-gif-maker (12)|600x143](upload://bZdapvBfsUNaFO3Kl5OJ2yoSGAx.gif)
+![ezgif.com-gif-maker (12)|600x143](https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/5/4/0/54034ba0c4ddc082ddb03cca6e82feca8bc37b11.gif)
 
 <hr/>
 
