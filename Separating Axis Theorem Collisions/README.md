@@ -315,7 +315,7 @@ E2.pos -= CollisionVector * (t * factor/2)
 
 That's it! You now have smooth collisions between rigid bodies with 'n' number of sides!
 
-https://doy2mn9upadnk.cloudfront.net/uploads/default/original/4X/f/6/f/f6fd68a8b2cfb00a284f9b1270dfa336b738ad60.mp4
+https://user-images.githubusercontent.com/74130881/135019871-1b7bcea5-d3da-4b78-bf18-6ddd4c5edd9d.mp4
 
 Once again, it is important to note that this would work accurately only for convex shapes, if you end up using concave shapes, the algorithm would end up using them as convex shapes:
 
