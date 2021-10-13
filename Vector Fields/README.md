@@ -22,5 +22,7 @@ If we certainly use the same function for a grid of points, we'll ultimately get
 
 Cool isn't it? You may have noticed that the longer vectors tend to clutter the vector field. If a the grid is enlarged and the number of vectors is increased, the vector field will be a complete mess. To counter this, we could artificially shorten the length of these vectors. To distinguish between long and short vectors, as many say, we can add color coding to the vectors, but that isn't necessary. 
 
+Next up, we'll be looking into fluid particles! We'll be associating each point on a vector field as a fluid particle, this fluid particle will have some sort of vector connected to it which will be used to portray the flow of fluid particles. 
+
 # Divergence
 
