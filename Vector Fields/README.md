@@ -10,6 +10,12 @@ Vector fields are used for several purposes, usually to have an understanding of
 
 Static vector fields are essentially vector fields whose vectors never change/are fixed. These fields are the representation of functions with same dimensions of their results and their parameters. Let's imagine, points in a uniform order are spread on a cartesian plane. These points mark tails (starting point) of vectors spread over the plane. To determine the direction and magnitude of these vectors, we'll write an arbritary function which takes in x and y (point). This function then produces an output which will be the direction of the vector. Let's take an easy to evaluate function to really get the hang of it. 
 
-![image](https://user-images.githubusercontent.com/74130881/137094540-d90dcf75-1898-447b-9d02-155d4a13f99b.png)
+<img src="https://user-images.githubusercontent.com/74130881/137094540-d90dcf75-1898-447b-9d02-155d4a13f99b.png" width="300px" />
 
-Here's a simple function. For any value of x and y, the head of the vector will be (x + 1, 2y - 1). 
+Here's a simple function. For any value of x and y, the head of the vector will be *(x + 1, 2y - 1)*. Let's say x and y are 0, the origin. To find the tail of the vector, we'll need to use the function above. x + 1, is 0 + 1, and 2y - 1 is 2 * 0 - 1. This results in (1, -1), which is the head of our vector. Let's take another example. Let the point be (2, 2). The resulting head would be (3, 3) and so on. Our vectors appear to be like this on the cartesian plane.
+
+<img src="https://user-images.githubusercontent.com/74130881/137096307-6ccf060a-f86e-4d8b-9cc9-409568567794.png" width="250px" />
+
+If we certainly use the same function for a grid of points, we'll ultimately get a vector field as a result. Let's try that on a 6x6 grid on the cartesian plane. Here's the result! Our vector field. 
+
+<img src="https://user-images.githubusercontent.com/74130881/137100573-ba51ec5c-bb5c-4d27-bac7-f882b425b9bc.png" width="300px" />
