@@ -48,6 +48,15 @@ end
 
 If you go ahead and render these points on the screen, they look something like the following:
 
-![image](https://user-images.githubusercontent.com/74130881/137110602-14ac0083-c34f-4dfa-8eb4-3d01aed2e5c9.png)
+<img src="https://user-images.githubusercontent.com/74130881/137110602-14ac0083-c34f-4dfa-8eb4-3d01aed2e5c9.png" width="700px" />
 
-Now that we have a grid of fluid particles, its time we understand what divergence really is. 
+Now that we have a grid of fluid particles, its time we understand what divergence really is. The literal meaning of divergence is moving or extending in different directions from a common point or put into simple words - moving away from something. The opposite (moving towards something), would be convergence. 
+
+<img src="https://user-images.githubusercontent.com/74130881/137115514-1888e42a-17b7-40fe-bd31-e69c961eee3f.png" width="500px">
+
+As the particles move according to the vector they are assigned, over-time when they move from one place to another, the vector assigned to the particle changes. This vector essentially is the velocity of the particles. As we saw above, every vector field has a function that defines the velocities of different points on the field. It is the same in this situation. Every particle has its own velocity vector. This vector can be calculated using a global function which is common for each and every particle on the vector field. This function is generally written as the following, where P and Q are functions that return scalar values and ultimately the function outputs a vector.
+
+![image](https://user-images.githubusercontent.com/74130881/137121701-7b9959a3-3a5c-4f21-a6c4-de29eaf2afc2.png)
+
+If we talk about divergence - In regards to the vector field, if we provide a point to a diverge function, we are expected to receive a scalar output which depicts how much a point is supposed to diverge or converge from a given point in space. If the divergence (scalar quantity) is greater than 0, we can confirm that the particle is moving away from the point. If its less than 0, the particle is moving towards the point in space.
+
