@@ -10,6 +10,6 @@ Vector fields are used for several purposes, usually to have an understanding of
 
 Static vector fields are essentially vector fields whose vectors never change/are fixed. These fields are the representation of functions with same dimensions of their results and their parameters. Let's imagine, points in a uniform order are spread on a cartesian plane. These points mark tails (starting point) of vectors spread over the plane. To determine the direction and magnitude of these vectors, we'll write an arbritary function which takes in x and y (point). This function then produces an output which will be the direction of the vector. Let's take an easy to evaluate function to really get the hang of it. 
 
-![image](https://user-images.githubusercontent.com/74130881/137093913-5c4bb1f3-4567-4bd9-bc4e-975ecbed23e1.png)
+![image](https://user-images.githubusercontent.com/74130881/137094540-d90dcf75-1898-447b-9d02-155d4a13f99b.png)
 
-Here's a simple function
+Here's a simple function. For any value of x and y, the head of the vector will be (x + 1, 2y - 1). 
