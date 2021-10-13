@@ -26,4 +26,28 @@ Next up, we'll be looking into fluid particles! We'll be associating each point 
 
 # Divergence
 
-Let's dive into the fluid we'll be creating a vector field of. We'll create a **static** vector field of the flow of water molecules. 
+Let's dive into the fluid we'll be creating a vector field of. We'll create a **static** vector field of the flow of fluid particles. Note that we'll keep uniform lengths of the vectors. Firstly, we'll define the points on a grid. These points will be the particles of the fluid. 
+
+```lua
+local viewport = workspace.CurrentCamera.ViewportSize
+local width = viewport.x 
+local height = viewport.y
+
+local grid = Vector2.new(20, 10)
+local gapX = width/grid.x 
+local gapY = height/grid.y
+
+local particles = {}
+
+for i = 1, grid.X - 1 do 
+	for j = 1, grid.y - 1 do 
+		table.insert(particles, Vector2.new(i * gapX, j * gapY))
+	end
+end
+```
+
+If you go ahead and render these points on the screen, they look something like the following:
+
+![image](https://user-images.githubusercontent.com/74130881/137110602-14ac0083-c34f-4dfa-8eb4-3d01aed2e5c9.png)
+
+Now that we have a grid of fluid particles, its time we understand what divergence really is. 
