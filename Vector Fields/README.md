@@ -19,3 +19,8 @@ Here's a simple function. For any value of x and y, the head of the vector will 
 If we certainly use the same function for a grid of points, we'll ultimately get a vector field as a result. Let's try that on a 6x6 grid on the cartesian plane. Here's the result! Our vector field. 
 
 <img src="https://user-images.githubusercontent.com/74130881/137100573-ba51ec5c-bb5c-4d27-bac7-f882b425b9bc.png" width="300px" />
+
+Cool isn't it? You may have noticed that the longer vectors tend to clutter the vector field. If a the grid is enlarged and the number of vectors is increased, the vector field will be a complete mess. To counter this, we could artificially shorten the length of these vectors. To distinguish between long and short vectors, as many say, we can add color coding to the vectors, but that isn't necessary. 
+
+# Divergence
+
