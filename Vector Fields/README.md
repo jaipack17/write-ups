@@ -60,3 +60,8 @@ As the particles move according to the vector they are assigned, over-time when 
 
 If we talk about divergence - In regards to the vector field, if we provide a point to a diverge function, we are expected to receive a scalar output which depicts how much a point is supposed to diverge or converge from a given point in space. If the divergence (scalar quantity) is greater than 0, we can confirm that the particle is moving away from the point. If its less than 0, the particle is moving towards the point in space.
 
+To be completed.
+
+# Curl 
+
+To be completed.
