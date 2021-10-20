@@ -20,4 +20,12 @@ The positions of the points and the threshold for each node can varry thus givin
 
 Imagine a case of collision detection. There are entities spread across the screen. In order to detect if an entity collides with another, we usually loop through each entity, then loop through all entities and check if they collide. This is inefficient, why? Say you have 10 bodies. Each body checks collisions with all 10 bodies when traversing, this means, we end up performing 10^2, 100 checks in total. Let's step the number up from 10 to 10,000. How many checks do we perform this time? We perform 10000^2 or 100,000,000 checks. See how expensive this gets as you increase the amount of entities?
 
+The reason why the method above is so inefficient is because of unnecessary and wasted collision detection checks. What is an unnecessary check? Suppose 2 entities are 1,000 units away from each other. Is it practically possible for them to collide when the checks are ran? Absolutely not. But, in the above method, we are still checking collisions with an entity 1,000 units away! Thats a wasted/unnecessary check!
+
+![image](https://user-images.githubusercontent.com/74130881/138098124-b2696eb2-3ec8-4b42-bc7f-91c5cb01d883.png)
+
+Quadtrees help out with this. They are efficient, fast and perfect for collision detection. Well, what makes them helpful? We'll look at this further ahead after we create a Quadtree.
+
+# Implementing a Quadtree
+
 - To be completed.
