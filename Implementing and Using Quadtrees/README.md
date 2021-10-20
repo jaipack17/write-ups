@@ -69,6 +69,81 @@ function Node:Insert(point: Vector2)
 end
 ```
 
-Well, we see some new stuff in their don't we? Let's break the method into different steps. Firstly, we have an unknown `HasObject` method. This method checks if a point is within the area of the node/origin.
+Well, we see some new stuff in their don't we? Let's break the method into different steps. Firstly, we have an unknown `HasObject` method. This method checks if a point is within the area of the node/origin. If not, we return from the function. Next we check if their's enough space for a point to fit in a region, if not the region subdivides into 4 more regions. This process continues until there's enough space for a point.
 
-* To be continued
+This method *may* cause memory leaks if the capacity is 1-2 and if the points are near the corners. A hacky way to deal with this would be to let some points be in a region even if their's not enough space.
+
+```lua
+function Node:Insert(point: Vector2)
+	if not self:HasObject(p) then return end
+
+	if #self.objects < self.capacity then 
+		self.objects[#self.objects + 1] = p
+	else
+		if not self.divided then 
+			self:SubDivide()
+			self.divided = true
+		end
+		
+		self.topLeft:Insert(p)
+		self.topRight:Insert(p)
+		self.bottomLeft:Insert(p)
+		self.bottomRight:Insert(p)
+	end
+end
+```
+
+Well, we have some unknown methods above, lets write them down as well. First would be the `HasObject()` method. We just compare the point's position with the bounds of the region and return a boolean.
+
+```lua
+function Node:HasObject(p: Vector2)
+    return (
+	(p.X > self.position.X) and (p.X < (self.position.X + self.size.X)) and 
+	(p.Y > self.position.Y) and (p.Y < (self.position.Y + self.size.Y))
+    )
+end
+```
+
+Lastly, the `SubDivide()` method. We can first create a private method that would assist us to position and set the size of the region.
+
+```lua
+local function GetDivisions(pos: Vector2, size: Vector2)
+	return {
+		{
+			pos = pos, -- [TOPLEFT]
+			size = size/2
+		},
+		{
+			pos = pos + Vector2.new(size.x/2, 0), -- [TOPRIGHT]
+			size = size/2
+		},
+		{
+			pos = pos + Vector2.new(0, size.y/2), -- [BOTTOMLEFT]
+			size = size/2
+		},
+		{
+			pos = pos + Vector2.new(size.x/2, size.y/2), -- [BOTTOMRIGHT]
+			size = size/2
+		},
+	}
+end
+
+function Quadtree:SubDivide()
+	local divisions = GetDivisions(self.position, self.size)
+
+	self.topLeft = Quadtree.new(divisions[1].pos, divisions[1].size, self.depth)
+	self.topRight = Quadtree.new(divisions[2].pos, divisions[2].size, self.depth)
+	self.bottomLeft = Quadtree.new(divisions[3].pos, divisions[3].size, self.depth)
+	self.bottomRight = Quadtree.new(divisions[4].pos, divisions[4].size, self.depth)
+end
+```
+
+This explains the basics of how Quadtrees can be created. We'll look into another method used to traverse through a quadtree ahead when we'll use quadtrees for making collision detection faster than before. Other methods for updating and removing nodes shouldn't be hard to make, so take it as an exercise! If you have points that constantly change positions, it's better to replace the Vector2 with a custom Point class and store those points in different nodes. You can even render these Quadtrees on screen using the Size and Position properties of nodes! Here's a Quadtree I rendered in studio:
+
+<img src="https://user-images.githubusercontent.com/74130881/138141637-7945e377-16e6-47a1-bf27-54ff5147553d.png" alt="quadtree-2" width="500px" />
+ 
+# Quadtrees In Collision Detection
+
+Initially we saw how efficient compared to traditional primitive methods of collision detection. So how do Quadtrees make collision detection efficient? Well you see, instead of checking for each point if the point collides with all the points excluding itself one after another, what if we could just filter points closed to one? Here's where quadtrees help us out! 
+
+* To be completed
