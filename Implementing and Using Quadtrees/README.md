@@ -28,4 +28,23 @@ Quadtrees help out with this. They are efficient, fast and perfect for collision
 
 # Implementing a Quadtree
 
-- To be completed.
+We'll now write our own Quadtree class in lua. We start by setting up a constructor function for a Node. Note that the Node acts as a region in a quadtree. The Node has a capacity, position, width and height (size), a boolean determining if the node has been subdivided and an array of points inside that region. We'll refer these points as objects.
+
+```lua
+local Node = {}
+Node.__index = Quadtree
+
+function Node.new(_position: Vector2, _size: Vector2, _capacity: number)
+	return setmetatable({
+        position = _position,
+        size = _size,
+		capacity = _capacity,
+		objects = {},
+		divided = false,
+	}, Node)
+end
+
+return Node
+```
+
+- To Be Completed
