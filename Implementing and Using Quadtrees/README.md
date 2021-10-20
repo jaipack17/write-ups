@@ -36,8 +36,8 @@ Node.__index = Quadtree
 
 function Node.new(_position: Vector2, _size: Vector2, _capacity: number)
 	return setmetatable({
-        position = _position,
-        size = _size,
+        	position = _position,
+        	size = _size,
 		capacity = _capacity,
 		objects = {},
 		divided = false,
