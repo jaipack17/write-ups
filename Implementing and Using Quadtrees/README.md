@@ -62,10 +62,10 @@ function Node:Insert(point: Vector2)
 		end
 	end
 
-	self.topLeft:Insert(p)
-	self.topRight:Insert(p)
-	self.bottomLeft:Insert(p)
-	self.bottomRight:Insert(p)
+	self.topLeft:Insert(point)
+	self.topRight:Insert(point)
+	self.bottomLeft:Insert(point)
+	self.bottomRight:Insert(point)
 end
 ```
 
@@ -85,10 +85,10 @@ function Node:Insert(point: Vector2)
 			self.divided = true
 		end
 		
-		self.topLeft:Insert(p)
-		self.topRight:Insert(p)
-		self.bottomLeft:Insert(p)
-		self.bottomRight:Insert(p)
+		self.topLeft:Insert(point)
+		self.topRight:Insert(point)
+		self.bottomLeft:Insert(point)
+		self.bottomRight:Insert(point)
 	end
 end
 ```
@@ -107,12 +107,12 @@ end
 Lastly, the `SubDivide()` method. We can first create a private method that would assist us to position and set the size of the region.
 
 ```lua
-local function GetDivisions(pos: Vector2, size: Vector2)
+local function GetDivisions(position: Vector2, size: Vector2)
 	return {
-		pos, -- [TOPLEFT]
-		pos + Vector2.new(size.x/2, 0), -- [TOPRIGHT]
-		pos + Vector2.new(0, size.y/2), -- [BOTTOMLEFT]
-		pos + Vector2.new(size.x/2, size.y/2), -- [BOTTOMRIGHT]
+		position, -- [TOPLEFT]
+		position + Vector2.new(size.x/2, 0), -- [TOPRIGHT]
+		position + Vector2.new(0, size.y/2), -- [BOTTOMLEFT]
+		position + Vector2.new(size.x/2, size.y/2), -- [BOTTOMRIGHT]
 	}
 end
 
@@ -153,20 +153,20 @@ function Node:Search(range: { position: Vector2, size: Vector2 }, closestObjects
     end
 
     if not RangeOverlapsNode(range) then 
-       return points
+       return objects
     end
 
     for _, obj in ipairs(self.objects) do
     	if RangeHasPoint(obj) then
-            self.objects[#self.objects + 1] = obj
+            objects[#objects + 1] = obj
         end
     end
  
     if self.divided then
-        merge(objects, self.topLeft:Search(range), objects)
-        merge(objects, self.topRight:Search(range), objects)
-        merge(objects, self.bottomLeft:Search(range), objects)
-        merge(objects, self.bottomRight:Search(range), objects)
+        merge(objects, self.topLeft:Search(range, objects))
+        merge(objects, self.topRight:Search(range, objects))
+        merge(objects, self.bottomLeft:Search(range, objects))
+        merge(objects, self.bottomRight:Search(range, objects))
     end
 
     return objects
