@@ -118,6 +118,8 @@ end
 
 function Quadtree:SubDivide()
 	local divisions = GetDivisions(self.position, self.size)
+ 
+        -- create subdivisions
 
 	self.topLeft = Quadtree.new(divisions[1], self.size/2, self.depth)
 	self.topRight = Quadtree.new(divisions[2], self.size/2, self.depth)
