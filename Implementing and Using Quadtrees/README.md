@@ -109,32 +109,20 @@ Lastly, the `SubDivide()` method. We can first create a private method that woul
 ```lua
 local function GetDivisions(pos: Vector2, size: Vector2)
 	return {
-		{
-			pos = pos, -- [TOPLEFT]
-			size = size/2
-		},
-		{
-			pos = pos + Vector2.new(size.x/2, 0), -- [TOPRIGHT]
-			size = size/2
-		},
-		{
-			pos = pos + Vector2.new(0, size.y/2), -- [BOTTOMLEFT]
-			size = size/2
-		},
-		{
-			pos = pos + Vector2.new(size.x/2, size.y/2), -- [BOTTOMRIGHT]
-			size = size/2
-		},
+		pos, -- [TOPLEFT]
+		pos + Vector2.new(size.x/2, 0), -- [TOPRIGHT]
+		pos + Vector2.new(0, size.y/2), -- [BOTTOMLEFT]
+		pos + Vector2.new(size.x/2, size.y/2), -- [BOTTOMRIGHT]
 	}
 end
 
 function Quadtree:SubDivide()
 	local divisions = GetDivisions(self.position, self.size)
 
-	self.topLeft = Quadtree.new(divisions[1].pos, divisions[1].size, self.depth)
-	self.topRight = Quadtree.new(divisions[2].pos, divisions[2].size, self.depth)
-	self.bottomLeft = Quadtree.new(divisions[3].pos, divisions[3].size, self.depth)
-	self.bottomRight = Quadtree.new(divisions[4].pos, divisions[4].size, self.depth)
+	self.topLeft = Quadtree.new(divisions[1], self.size/2, self.depth)
+	self.topRight = Quadtree.new(divisions[2], self.size/2, self.depth)
+	self.bottomLeft = Quadtree.new(divisions[3], self.size/2, self.depth)
+	self.bottomRight = Quadtree.new(divisions[4], self.size/2, self.depth)
 end
 ```
 
