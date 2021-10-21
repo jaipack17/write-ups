@@ -47,7 +47,7 @@ end
 return Node
 ```
 
-The next step would be to create an Insert() method which takes in a Vector2 (point) as a parameter, checks if a node has enough capacity to fit the point in, if not, it subdivides into 4 more nodes, this check continues until there's enough capacity to fit in a point.
+The next step would be to create an Insert() method which takes in a Vector2 (point) as a parameter, checks if a node has enough capacity to fit the point in, if not, it subdivides into 4 more nodes, this check continues until there's enough capacity for an intake.
 
 ```lua
 function Node:Insert(point: Vector2)
