@@ -205,7 +205,7 @@ The method above can be made much more performant than how it is currently. Ther
 
 ![image](https://user-images.githubusercontent.com/74130881/138239352-44efed13-9ef2-4627-85f7-969cffd0ee14.png)
 
-Here, when we check for collisions between point 1 and point 2, we see that they aren't colliding. Iterating through these two points, we are unnecessarily having an extra check. If we already denote that point 1 does not collide with point 2, what's the point of checking if point 2 collides with point 1 (difference in sequence/order)? Exactly, there's no point. Some sort of cache to store points that have already been checked for collisions can be made and used accordingly.
+Here, when we check for collisions between point 1 and point 2, we see that they aren't colliding. Iterating through these two points, we are unnecessarily having an extra check. If we already denote that point 1 does not collide with point 2, what's the need of checking if point 2 collides with point 1 (difference in sequence/order)? Exactly, there's no necessity. Some sort of cache to store points that have already been checked for collisions can be made and used accordingly.
 
 <hr/>
 
