@@ -6,7 +6,7 @@
 
 # Preface
 
-Quadtrees are tree based data structures used prevalently in game development and computer graphics. These trees have at most 4 subdivisions/nodes. You might have heard about octrees before. Octrees are similar to quadtrees but unlike quadtrees, octrees are 3 dimensional and have 8 subdivisions that are cubes. These nodes, if visualized usually are squares, and their subdivisions are squares smaller than their parent node. Quadtrees are used in collision detection, game engines, image processing, mesh generation etc. In this article, we cover implementation, visualization of quadtrees as well collision detection with quadtrees. I also assume you know the basic architecture of how tree data structures work. If you aren't yet familiar with trees, consider checking them out before this article!
+Quadtrees are tree based data structures used prevalently in game development and computer graphics. These trees are used for organizing spacial information in a 2D space. These trees have at most 4 subdivisions/nodes. You might have heard about octrees before. Octrees are similar to quadtrees but unlike quadtrees, octrees are 3 dimensional and have 8 subdivisions that are cubes. These nodes, if visualized usually are squares, and their subdivisions are squares smaller than their parent node. Quadtrees are used in collision detection, game engines, image processing, mesh generation etc. In this article, we cover implementation, visualization of quadtrees as well collision detection with quadtrees. I also assume you know the basic architecture of how tree data structures work. If you aren't yet familiar with trees, consider checking them out before this article!
 
 # Conceptual Understanding 
 
@@ -71,7 +71,7 @@ end
 
 Well, we see some new stuff in their don't we? Let's break the method into different steps. Firstly, we have an unknown `HasObject` method. This method checks if a point is within the area of the node/origin. If not, we return from the function. Next we check if their's enough space for a point to fit in a region, if not the region subdivides into 4 more regions. This process continues until there's enough space for a point.
 
-This method *may* cause memory leaks if the capacity is 1-2 and if the points are near the corners. A hacky way to deal with this would be to let some points be in a region even if their's not enough space.
+This method *may* cause memory leaks if the capacity is 1-2 and if the points are near the corners. A hacky way to deal with this would be to let some points be in a region even if their's not enough space. It's much better to use the method below for more performant quadtrees and also easier collision detection methods!
 
 ```lua
 function Node:Insert(point: Vector2)
@@ -138,4 +138,81 @@ Initially we saw how efficient compared to traditional primitive methods of coll
 
 Let's say you have 5 points on screen. Using the primitive method, you perform 5x5 = 25 collision detection checks in total. Now lets say you have quadtrees! There are different regions with different amounts of points. What if we just iterate through the points, fetch the closets points to it and perform checks with just these few points! See how that reduces so many unnecessary checks? 
 
-* To be completed
+In order to fetch all other points **close** to a particular point, we need the position of the point we are checking for as well as some bounds. These bounds define the extent of searching for points closer to the particular point. This boundary may be a rectangle, a square, a circle or any other shape! For simplicity sake, we'll use squares. It shouldn't be hard to implement circles or rectangles for the boundaries though. 
+
+Here's the visualization of how this boundary is going to help us. The red point is the point we are fetching the closest points for. The range and the closest points are depicted in green, the rest in white. 
+
+<img src="https://user-images.githubusercontent.com/74130881/138230790-760ba789-eaa9-477e-8ff2-4d6e05358917.png" alt="example-1" width="400px" />
+
+Quadtrees are going to help a lot to filter the points that are no where close to the point to check for. Let's write a `Search()` method in the Node class that takes in a point and some boundary, then spits out other points close to it.
+
+```lua
+function Node:Search(range: { position: Vector2, size: Vector2 }, closestObjects) -- closestObjects empty initially
+    if not closestObjects then 
+    	local objects = {} -- array of closest points
+    end
+
+    if not RangeOverlapsNode(range) then 
+       return points
+    end
+
+    for _, obj in ipairs(self.objects) do
+    	if RangeHasPoint(obj) then
+            self.objects[#self.objects + 1] = obj
+        end
+    end
+ 
+    if self.divided then
+        merge(objects, self.topLeft:Search(range), objects)
+        merge(objects, self.topRight:Search(range), objects)
+        merge(objects, self.bottomLeft:Search(range), objects)
+        merge(objects, self.bottomRight:Search(range), objects)
+    end
+
+    return objects
+end
+```
+
+Let's see what we have here. Firstly we define an array which will consist of all the points in the range. Next we check if the range overlaps the Node, if not just return an empty array. If these two checks pass, we iterate through our points, check if the point lies within the range and push the point into the array. Further ahead we check if the Node has subdivisions, if yes we recursive go through each subdivision, fetch the points in the subdivision **that are within the range** and concatenate the objects array with the fetched subdivision points.
+
+There are a few unknown methods in there, including `RangeOverlapsNode()`, `RangeHasPoint()` and `merge()`. I won't be covering these methods. Those algorithms are not at all tricky to implement. Take this one as an exercise as well! 
+
+You can then use the `Search()` method in your code.
+
+```lua
+local range = ... -- some range
+
+for _, p in ipairs(pointsArray) do
+    local closestPoints = QuadtreeRoot:Search(range)
+
+    for _, other in ipairs(closestPoints) do
+        -- detect and process collisions
+    end
+end
+```
+
+Note that you shouldn't render quadtrees on the screen since that's just unnecessary and a waste of resources. It is fine for debugging but not production code.
+
+Quadtrees makes iterating through a large amount of data easier than before! Something that took us 100,000,000 checks, now takes us a lot lesser. Here's a comparison of 1,000 particles. 1 uses the primitive method of iterating through the particles while the latter uses quadtrees! The particles in white are particles that are in some form of collision. Notice the difference in the frame rate?
+
+[Media Source](https://editor.p5js.org/codingtrain/sketches/CDMjU0GIK)
+
+<img src="https://user-images.githubusercontent.com/74130881/138237758-d1cd9b6c-0483-433c-8bb0-719a83140d67.gif" alt="example-1" width="450px" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/74130881/138238253-91411368-f443-4525-8c9a-3feac233ce05.gif" alt="example-1" width="450px" />
+
+To update quadtrees based on the positions of an object, you should use custom classes for points instead of just vectors. To update the quadtree, you can use computation, maybe create a new quadtree every frame? Maybe clear the quadtree and add all the points once again. It's for you to find out! 
+
+The method above can be made much more performant than how it is currently. There are still a lot of wasted checks. Here's how checks are wasted. Take the example of just two points.
+
+![image](https://user-images.githubusercontent.com/74130881/138239352-44efed13-9ef2-4627-85f7-969cffd0ee14.png)
+
+Here, when we check for collisions between point 1 and point 2, we see that they aren't colliding. Iterating through these two points, we are unnecessarily having an extra check. If we already denote that point 1 does not collide with point 2, what's the point of checking if point 2 collides with point 1 (difference in sequence/order)? Exactly, there's no point. Some sort of cache to store points that have already been checked for collisions can be made and used accordingly.
+
+<hr/>
+
+I hope you learnt something new today. Quadtrees can be used for a wide variety of things, more than just collision detection. You should definitely experiment with quadtrees in the future. Here are some excellent resources you can learn more about quadtrees from:
+
+* [An Explaination of Quadtrees - MrHeyheyhey27](https://www.youtube.com/watch?v=jxbDYxm-pXg)
+* [Coding the Visualization of Quadtrees - The Coding Train](https://www.youtube.com/watch?v=OJxEcs0w_kE)
+* [Quadtrees and Octrees - Tyler Scott](https://www.youtube.com/watch?v=xFcQaig5Z2A)
+
+Thank you for tuning in!
