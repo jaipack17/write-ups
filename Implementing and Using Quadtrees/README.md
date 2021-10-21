@@ -144,6 +144,8 @@ This explains the basics of how Quadtrees can be created. We'll look into anothe
  
 # Quadtrees In Collision Detection
 
-Initially we saw how efficient compared to traditional primitive methods of collision detection. So how do Quadtrees make collision detection efficient? Well you see, instead of checking for each point if the point collides with all the points excluding itself one after another, what if we could just filter points closed to one? Here's where quadtrees help us out! 
+Initially we saw how efficient compared to traditional primitive methods of collision detection. So how do Quadtrees make collision detection efficient? Well you see, instead of checking for each point if the point collides with all the points excluding itself one after another, what if we could just filter points close to one? Here's where quadtrees help us out! 
+
+Let's say you have 5 points on screen. Using the primitive method, you perform 5x5 = 25 collision detection checks in total. Now lets say you have quadtrees! There are different regions with different amounts of points (?). What if we just iterate through the points, fetch the closets points to it and perform checks with just these few points! See how that reduces so many unnecessary checks? 
 
 * To be completed
