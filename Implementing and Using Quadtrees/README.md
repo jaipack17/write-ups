@@ -116,15 +116,15 @@ local function GetDivisions(pos: Vector2, size: Vector2)
 	}
 end
 
-function Quadtree:SubDivide()
+function Node:SubDivide()
 	local divisions = GetDivisions(self.position, self.size)
  
         -- create subdivisions
 
-	self.topLeft = Quadtree.new(divisions[1], self.size/2, self.depth)
-	self.topRight = Quadtree.new(divisions[2], self.size/2, self.depth)
-	self.bottomLeft = Quadtree.new(divisions[3], self.size/2, self.depth)
-	self.bottomRight = Quadtree.new(divisions[4], self.size/2, self.depth)
+	self.topLeft = Node.new(divisions[1], self.size/2, self.depth)
+	self.topRight = Node.new(divisions[2], self.size/2, self.depth)
+	self.bottomLeft = Node.new(divisions[3], self.size/2, self.depth)
+	self.bottomRight = Node.new(divisions[4], self.size/2, self.depth)
 end
 ```
 
