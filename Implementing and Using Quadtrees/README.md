@@ -51,7 +51,7 @@ The next step would be to create an Insert() method which takes in a Vector2 (po
 
 ```lua
 function Node:Insert(point: Vector2)
-	if not self:HasObject(p) then return end
+	if not self:HasObject(point) then return end
 
 	if #self.objects < self.capacity then 
 		self.objects[#self.objects + 1] = p
@@ -75,7 +75,7 @@ This method *may* cause memory leaks if the capacity is 1-2 and if the points ar
 
 ```lua
 function Node:Insert(point: Vector2)
-	if not self:HasObject(p) then return end
+	if not self:HasObject(point) then return end
 
 	if #self.objects < self.capacity then 
 		self.objects[#self.objects + 1] = p
