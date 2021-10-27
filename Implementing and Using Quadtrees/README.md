@@ -121,10 +121,10 @@ function Node:SubDivide()
  
         -- create subdivisions
 
-	self.topLeft = Node.new(divisions[1], self.size/2, self.depth)
-	self.topRight = Node.new(divisions[2], self.size/2, self.depth)
-	self.bottomLeft = Node.new(divisions[3], self.size/2, self.depth)
-	self.bottomRight = Node.new(divisions[4], self.size/2, self.depth)
+	self.topLeft = Node.new(divisions[1], self.size/2, self.capacity)
+	self.topRight = Node.new(divisions[2], self.size/2, self.capacity)
+	self.bottomLeft = Node.new(divisions[3], self.size/2, self.capacity)
+	self.bottomRight = Node.new(divisions[4], self.size/2, self.capacity)
 end
 ```
 
