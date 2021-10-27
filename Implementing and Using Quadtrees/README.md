@@ -54,7 +54,7 @@ function Node:Insert(point: Vector2)
 	if not self:HasObject(point) then return end
 
 	if #self.objects < self.capacity then 
-		self.objects[#self.objects + 1] = p
+		self.objects[#self.objects + 1] = point
 		self:SubDivide()
 	else
 		if not self.divided then 
@@ -78,7 +78,7 @@ function Node:Insert(point: Vector2)
 	if not self:HasObject(point) then return end
 
 	if #self.objects < self.capacity then 
-		self.objects[#self.objects + 1] = p
+		self.objects[#self.objects + 1] = point
 	else
 		if not self.divided then 
 			self:SubDivide()
