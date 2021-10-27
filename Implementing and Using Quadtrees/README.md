@@ -32,7 +32,7 @@ We'll now write our own Quadtree class in lua. We start by setting up a construc
 
 ```lua
 local Node = {}
-Node.__index = Quadtree
+Node.__index = Node
 
 function Node.new(_position: Vector2, _size: Vector2, _capacity: number)
 	return setmetatable({
