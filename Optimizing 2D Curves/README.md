@@ -51,7 +51,7 @@ for i = 2, #points do
      if points[i] then 
           local line = next - start
 
-          -- If the current point lies of the line 
+          -- If the current point lies on the line spanned by the vector
           if points[i]:Cross(line) == 0 then
                next = points[i]
           else 
@@ -64,14 +64,10 @@ for i = 2, #points do
 end
 ```
 
-You can apply this optimization after calculating the points and during the rendering process or directly when calculating the points of the curve. It is also worth noting that it may not always be the case that the points lie **exactly** on the same straight line thus giving not so interesting optimization results. To counter this problem, you could check the perpendicular distance between the point and the straight line you are checking for. If the distance is less than some threshold, you could say that 'the point lies on the line'. Also take a note that the larger this threshold, the lesser the resolution of the curve. And in my opinion, this method is the go-to method for eliminating straight lines.
+You can apply this optimization after calculating the points and during the rendering process or directly when calculating the points of the curve. It is also worth noting that it may not always be the case that the points lie **exactly** on the same straight line thus giving not so interesting optimization results. To counter this problem, you could check the perpendicular distance between the point and the straight line you are checking for. If the distance is less than some threshold, you could say that 'the point lies on the line'. Also take a note that the larger this threshold, the lesser the resolution of the curve. And in my opinion, this method is the go-to method for eliminating straight lines. There is an edge case to the distance check. If a point is close to the line but isn't in the direction where `next - start` vector is pointing, then it's going to malform the curve. To fix this, you may want to also check the direction in which the point lies.
 
-To check if the perpendicular distance between a point and the line is less than the distance threshold: 
+<img width="500px" src="https://user-images.githubusercontent.com/74130881/150632590-fc4e7fce-4a1e-4666-975b-b7fc014bf619.png" />
 
-```lua
-local distanceThreshold = 5 
-```
-
-This technique will produce different results for different kinds of curves, for some curves there may not be much of a difference but for some it may be a drastic improvement.
+This technique will produce different results for different kinds of curves, for some curves there may not be much of a difference but for some it may be a drastic improvement. 
 
 # Douglas Peucker Algorithm
