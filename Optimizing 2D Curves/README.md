@@ -8,6 +8,9 @@
 * [Overview](#overview)
 * [Eliminating Straight Lines](#eliminating-straight-lines)
 * [Douglas Peucker Algorithm](#douglas-peucker-algorithm)
+* [Douglas Peucker Algorithm on Loops and Polygons](#douglas-peucker-algorithm-on-loops-and-polygons)
+* [Reumann Witkam Algorithm](#reumann-witkam-algorithm)
+* [Conclusion](#conclusion)
 
 # Overview
 
@@ -68,10 +71,20 @@ for i = 2, #points do
 end
 ```
 
-You can apply this optimization after calculating the points and during the rendering process or directly when calculating the points of the curve. It is also worth noting that it may not always be the case that the points lie **exactly** on the same straight line thus giving not so interesting optimization results. To counter this problem, you could check the perpendicular distance between the point and the straight line you are checking for. If the distance is less than some threshold, you could say that 'the point lies on the line'. Also take a note that the larger this threshold, the lesser the resolution of the curve. And in my opinion, this method is the go-to method for eliminating straight lines. There is an edge case to the distance check. If a point is close to the line but isn't in the direction where `next - start` vector is pointing, then it's going to malform the curve. To fix this, you may want to also check the direction in which the point lies.
+You can apply this optimization after calculating the points and during the rendering process or directly when calculating the points of the curve. It is also worth noting that it may not always be the case that the points lie **exactly** on the same straight line thus giving not so interesting optimization results. To counter this problem, you could check the perpendicular distance between the point and the straight line you are checking for. If the distance is less than some threshold, you could say that 'the point lies on the line'. Also take a note that the larger this threshold, the lesser the resolution of the curve. This is somewhat similar to how the Douglas Peucker Algorithm works. And in my opinion, this method is the go-to method for eliminating straight lines. There is an edge case to the distance check. If a point is close to the line but isn't in the direction where `next - start` vector is pointing, then it's going to malform the curve. To fix this, you may want to also check the direction in which the point lies.
 
 <img width="500px" src="https://user-images.githubusercontent.com/74130881/150632590-fc4e7fce-4a1e-4666-975b-b7fc014bf619.png" />
 
 This technique will produce different results for different kinds of curves, for some curves there may not be much of a difference but for some it may be a drastic improvement. 
 
 # Douglas Peucker Algorithm
+
+The Ramer Douglas Peucker algorithm is one of the most famous algorithms used for optimizing curves. The idea is similar to what we read above, but this algorithm doesn't just look for straight lines but works to use lesser amount of line segments for the whole curve. This algorithm is pretty effecient besides a few edge cases that we saw earlier. 
+
+The idea is to reduce the amount of points used to draw the curve by first 
+
+# Douglas Peucker Algorithm on Loops and Polygons
+
+# Reumann Witkam Algorithm
+
+# Conclusion
