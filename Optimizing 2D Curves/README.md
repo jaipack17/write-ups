@@ -3,6 +3,12 @@
 </div>
 <hr/>
 
+# Contents
+
+* [Overview](#overview)
+* [Eliminating Straight Lines](#eliminating-straight-lines)
+* [Douglas Peucker Algorithm](#douglas-peucker-algorithm)
+
 # Overview
 
 When rendering curves on the screen, we use up a lot objects to cover up the spaces between and to connect points (lying on the curve) together. Sometimes if not always, we tend to use more objects than actually necessary, this can hurt performance and take up a lot of memory. In this write-up, I cover a few methods that can help reduce memory usage when dealing with curves. 
@@ -24,3 +30,48 @@ If you are connecting each point with the point next to it, you may be using too
 In the image above, A, B, C, D and E lie on the same line. Meaning, a line passes through all 5 of these points (marked in blue). Hence we can eliminate B, C and D and just connect AE with one line segment. Earlier we used eight line segments for this small curve, after eliminating unnecessary line segments, we create this curve with just five line segments. This isn't a very huge change, but helps a lot in certain cases and also when the curves consist of a large number of points. This technique reduces the amount of line segments you actually make use of but without having an impact on the resolution of the curve.
 
 The implementation of this algorithm is rather easy. We can do this by traversing through each point of the curve, and then searching for the next point to connect with the initial one. Suppose we are at point A, we now start the search for the point we should connect with point A. We go to point B and we find that B lies on the same line as A. Note that two consecutive points considering that either one of them is an 'initial' point will always lie on the same line. We then go to point C and we find that C lies on the same line as A and B! So, we eliminate B and set the point we should connect to A as point C. Now we go to point D and we find out that D does not lie on the same line as A and C, this means we have successfully found the point we should connect with point A, which in our case is point C. We join point A and C and then continue the process starting from point C until the end of the curve.
+
+Here's the implementation of this algorithm in Lua.
+
+```lua
+-- An array of points on the curve
+local points = { ... }
+
+local start = points[1]
+local next = nil
+
+-- Starting from the second index
+for i = 2, #points do 
+     -- If next does not exist, set next to the current point
+     if not next then 
+          next = points[i]
+          i += 1
+     end
+
+     if points[i] then 
+          local line = next - start
+
+          -- If the current point lies of the line 
+          if points[i]:Cross(line) == 0 then
+               next = points[i]
+          else 
+               -- If not, draw the line segment, set start to next and next to nil.
+               DrawLineSegment(start, next)
+               start = next
+               next = nil
+          end
+     end
+end
+```
+
+You can apply this optimization after calculating the points and during the rendering process or directly when calculating the points of the curve. It is also worth noting that it may not always be the case that the points lie **exactly** on the same straight line thus giving not so interesting optimization results. To counter this problem, you could check the perpendicular distance between the point and the straight line you are checking for. If the distance is less than some threshold, you could say that 'the point lies on the line'. Also take a note that the larger this threshold, the lesser the resolution of the curve. And in my opinion, this method is the go-to method for eliminating straight lines.
+
+To check if the perpendicular distance between a point and the line is less than the distance threshold: 
+
+```lua
+local distanceThreshold = 5 
+```
+
+This technique will produce different results for different kinds of curves, for some curves there may not be much of a difference but for some it may be a drastic improvement.
+
+# Douglas Peucker Algorithm
