@@ -10,6 +10,7 @@
 * [Eliminating Straight Lines](#eliminating-straight-lines)
 * [Douglas-Peucker Algorithm](#douglas-peucker-algorithm)
 * [Douglas-Peucker Algorithm on Loops and Polygons](#douglas-peucker-algorithm-on-loops-and-polygons)
+* [Visvalingam-Whyatt Algorithm](#visvalingam-whyatt-algorithm)
 * [Conclusion](#conclusion)
 
 # Overview
@@ -91,8 +92,10 @@ One downside of this algorithm is that, it can only be applied after you calcula
 
 # Douglas-Peucker Algorithm on Loops and Polygons
 
+# Visvalingam-Whyatt Algorithm
+
 # Conclusion
 
-That is it for this article! It is a bit lengthy but it's worth knowing about these algorithms which will help the next time you have to generate curves. These algorithms are quite similar, all of them have the same goal, that is to simiply a curve but the procedures differ. So it is up to you on which algorithm you would want to make use of in your code. There are a few more algorithms that I haven't mentioned in this article due to them being very similar to the ones already explained. If you still wish to go through some more or if you aren't able to pick an algorithm for yourself. Check out the [Visvalingam-Whyatt Algorithm](https://ignf.github.io/CartAGen/docs/algorithms/line/visvalingam.html) and the [Reumann–Witkam Algorithm](http://psimpl.sourceforge.net/reumann-witkam.html).
+That is it for this article! It is a bit lengthy but it's worth knowing about these algorithms which will help the next time you have to generate curves. These algorithms are quite similar, all of them have the same goal, that is to simiply a curve but the procedures differ. So it is up to you on which algorithm you would want to make use of in your code. There are a few more algorithms that I haven't mentioned in this article due to them being very similar to the ones already explained.
 
 Thank you for reading.
