@@ -87,6 +87,8 @@ The idea is to reduce the amount of points used to draw the curve by filtering o
 
 [Media Source](https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm)
 
+One downside of this algorithm is that, it can only be applied after you calculate all the points on the curve and not while calculating the points on the curve.
+
 # Douglas-Peucker Algorithm on Loops and Polygons
 
 # Conclusion
