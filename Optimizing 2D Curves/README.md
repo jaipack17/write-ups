@@ -1,3 +1,5 @@
+> # Incomplete
+
 <div align="center">
      <h1>Optimizing Curves Algorithmically</h1>
      <p>A few techniques and algorithms for curve simplification</p>
