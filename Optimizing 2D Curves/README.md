@@ -54,6 +54,10 @@ for i = 2, #points do
           -- If the current point lies on the line spanned by the vector
           if points[i]:Cross(line) == 0 then
                next = points[i]
+               if i == #points then 
+                    DrawLineSegment(start, next)
+                    break
+               end
           else 
                -- If not, draw the line segment, set start to next and next to nil.
                DrawLineSegment(start, next)
