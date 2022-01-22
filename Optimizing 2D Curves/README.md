@@ -1,5 +1,6 @@
 <div align="center">
-     <h1>Optimizing 2D Curves</h1>
+     <h1>Optimizing Curves Algorithmically</h1>
+     <p>A few techniques and algorithms for curve simplification</p>
 </div>
 <hr/>
 
@@ -7,14 +8,13 @@
 
 * [Overview](#overview)
 * [Eliminating Straight Lines](#eliminating-straight-lines)
-* [Douglas Peucker Algorithm](#douglas-peucker-algorithm)
-* [Douglas Peucker Algorithm on Loops and Polygons](#douglas-peucker-algorithm-on-loops-and-polygons)
-* [Reumann Witkam Algorithm](#reumann-witkam-algorithm)
+* [Douglas-Peucker Algorithm](#douglas-peucker-algorithm)
+* [Douglas-Peucker Algorithm on Loops and Polygons](#douglas-peucker-algorithm-on-loops-and-polygons)
 * [Conclusion](#conclusion)
 
 # Overview
 
-When rendering curves on the screen, we use up a lot objects to cover up the spaces between and to connect points (lying on the curve) together. Sometimes if not always, we tend to use more objects than actually necessary, this can hurt performance and take up a lot of memory. In this write-up, I cover a few methods that can help reduce memory usage when dealing with curves. 
+A lot of situations arise when you have to make the use of curves algorithmically in game development, maybe curved paths for roads, generative art, procedural animations, to generate topological data etc. But, when rendering curves on the screen, we use up a lot objects to cover up the spaces between and to connect points (lying on the curve) together. Sometimes if not always, we tend to use more objects than actually necessary, this can hurt performance and take up a lot of memory. In this write-up, I cover a few methods that can help reduce memory usage when dealing with curves. 
 
 The techniques I'll be sharing are very beneficial for a number of situations. These include - drawing bezier curves, splines, optimizing drawing tools and much more. If you're dealing with such cases, stick around till the end.
 
@@ -34,7 +34,7 @@ In the image above, A, B, C, D and E lie on the same line. Meaning, a line passe
 
 The implementation of this algorithm is rather easy. We can do this by traversing through each point of the curve, and then searching for the next point to connect with the initial one. Suppose we are at point A, we now start the search for the point we should connect with point A. We go to point B and we find that B lies on the same line as A. Note that two consecutive points considering that either one of them is an 'initial' point will always lie on the same line. We then go to point C and we find that C lies on the same line as A and B! So, we eliminate B and set the point we should connect to A as point C. Now we go to point D and we find out that D does not lie on the same line as A and C, this means we have successfully found the point we should connect with point A, which in our case is point C. We join point A and C and then continue the process starting from point C until the end of the curve.
 
-Here's the implementation of this algorithm in Lua.
+Here's the implementation of this algorithm.
 
 ```lua
 -- An array of points on the curve
@@ -77,14 +77,20 @@ You can apply this optimization after calculating the points and during the rend
 
 This technique will produce different results for different kinds of curves, for some curves there may not be much of a difference but for some it may be a drastic improvement. 
 
-# Douglas Peucker Algorithm
+# Douglas-Peucker Algorithm
 
 The Ramer Douglas Peucker algorithm is one of the most famous algorithms used for optimizing curves. The idea is similar to what we read above, but this algorithm doesn't just look for straight lines but works to use lesser amount of line segments for the whole curve. This algorithm is pretty effecient besides a few edge cases that we saw earlier. 
 
-The idea is to reduce the amount of points used to draw the curve by first 
+The idea is to reduce the amount of points used to draw the curve by first taking an initial line segment, this line segment is always the segment between the first and the last point of the curve. 
 
-# Douglas Peucker Algorithm on Loops and Polygons
+<img width="500px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/RDP%2C_varying_epsilon.gif/330px-RDP%2C_varying_epsilon.gif" />
 
-# Reumann Witkam Algorithm
+[Media Source](https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm)
+
+# Douglas-Peucker Algorithm on Loops and Polygons
 
 # Conclusion
+
+That is it for this article! It is a bit lengthy but it's worth knowing about these algorithms which will help the next time you have to generate curves. These algorithms are quite similar, all of them have the same goal, that is to simiply a curve but the procedures differ. So it is up to you on which algorithm you would want to make use of in your code. There are a few more algorithms that I haven't mentioned in this article due to them being very similar to the ones already explained. If you still wish to go through some more or if you aren't able to pick an algorithm for yourself. Check out the [Visvalingam-Whyatt Algorithm](https://ignf.github.io/CartAGen/docs/algorithms/line/visvalingam.html) and the [Reumann–Witkam Algorithm](http://psimpl.sourceforge.net/reumann-witkam.html).
+
+Thank you for reading.
