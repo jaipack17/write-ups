@@ -1,8 +1,6 @@
-> # Incomplete
-
 <div align="center">
      <h1>Optimizing Curves Algorithmically</h1>
-     <p>A few techniques and algorithms for curve simplification</p>
+     <p>A few techniques and algorithms for curve and polyline simplification</p>
 </div>
 <hr/>
 
@@ -194,9 +192,75 @@ Here's an example of the algorithm simplifying a closed figure in real time.
 
 # Visvalingam-Whyatt Algorithm
 
-The Visvalingam-Whyatt algorithm isn't as popular as the Douglas Peucker algorithm but serves a great hand in the simplification of curves and polylines. This algorithm has an iterative approach. The algorithm is used to discard/remove any points that are not needed for the simplified curve unlike the Douglas Peucker algorithm where we look for points to keep.
+The Visvalingam-Whyatt algorithm isn't as popular as the Douglas Peucker algorithm but serves a great hand in the simplification of curves and polylines and may even be more effective than Douglas-Peucker due to the small number of edge cases it has. It's used to discard/remove any points that are not needed for the simplified curve unlike the Douglas Peucker algorithm where we look for points to keep. This algorithm has a really interesting and easy approach.
 
-The algorithm has a very simple procedure, we consider an epsilon or a threshold that's a number, just like the Douglas-Peucker algorithm. Next we 
+It has a very simple procedure, we consider an epsilon or a threshold that's a number, just like the Douglas-Peucker algorithm. Next we iterate through the points of the curve. For every 3 consecutive points, we form a triangle. If the area of the smallest triangle is less than the epsilon, the triangle is removed by deleting the point that lies between the bounds of the other two points, this process continues until we have no triangle left with the area smaller than the epsilon. This algorithm is great for simplifying polygons, curves and polylines!
+
+<img src="https://user-images.githubusercontent.com/74130881/150669687-8a2f21c1-56b5-4a5e-a710-d331cb33b503.png" width="500px" />
+
+For the implementation, we simply iterate through the points, form triangles, remove the smaller triangle with the area lesser than the epsilon, over and over again until we have no triangles that have areas lesser than the epsilon. We'll be storing these triangles in an array but using a min-heap datastruction will give better and faster results for finding the triangle with the smallest area out of all.
+
+```lua
+local points = { ... }
+local epsilon = 5
+
+-- Use heron's formula to calculate area of the triangle.
+local function CalculateAreaOfTriangle(a, b, c)
+     local ab = (b - a).Magnitude
+     local bc = (b - c).Magnitude
+     local ac = (c - a).Magnitude
+
+     local s = (ab + bc + ac)/2
+
+     return math.sqrt(s * (s - ab) * (s - bc) * (s - ac))
+end
+
+local function VisvalingamWhyatt(points) 
+     local minArea = nil
+     local pointToRemove = -1
+     
+     -- Start traversing the points from the 3rd index to the last
+     for i = 3, #points, 1 do 
+	  local a = points[i - 2]
+	  local b = points[i - 1]
+	  local c = points[i]
+
+	  -- Caculate minimum area
+	  local area = CalculateAreaOfTriangle(a, b, c)
+	  if minArea == nil or area < minArea then
+		minArea = area
+		pointToRemove = i - 1
+          end
+     end
+
+     -- Check if minimum area is greater than the epsilon, if yes then stop the algorithm.
+     if minArea >= epsilon then 
+	  pointToRemove = -1
+     end
+      
+     if pointToRemove > 0 then 
+	  table.remove(points, pointToRemove)
+	  -- If any triangles can be formed, continue the algorithm
+	  if #points > 2 then 
+	       VisvalingamWhyatt(points)
+       	  end
+     end
+end
+
+VisvalingamWhyatt(points)
+
+local prev = nil
+for _, p in ipairs(points) do 
+	if prev then 
+		DrawLine(p, prev, canvas.Drawn, 3, Color3.new(1, 1, 1))
+		prev = p
+	else 
+		prev = p
+	end
+end
+```
+
+You can once again fidget around with the epsilon for the result you desire. I find this algorithm to be better than Douglas-Peucker because of its simplicity and effectiveness. The choice is yours!
 
 # Conclusion
 
