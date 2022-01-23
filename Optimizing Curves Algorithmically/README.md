@@ -260,7 +260,7 @@ end
 
 You can once again fidget around with the epsilon for the result you desire. I find this algorithm to be better than Douglas-Peucker because of its simplicity and effectiveness. The choice is yours! Here's the algorithm in action
 
-<img src="https://user-images.githubusercontent.com/74130881/150672264-73e6c3d3-508f-4d00-a6b0-2f8793ae4a16.gif" width="550px" />
+<img src="https://user-images.githubusercontent.com/74130881/150672264-73e6c3d3-508f-4d00-a6b0-2f8793ae4a16.gif" width="450px" />
 
 # Conclusion
 
