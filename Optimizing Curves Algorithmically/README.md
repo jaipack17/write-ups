@@ -188,8 +188,6 @@ The start and end point of a closed figure are the same, so... how can we choose
 
 If the above methods don't seem to work as well, we have another choice! To go back to choosing random starting points or choosing the first starting point and the point farthest to it as the end point. The algorithm won't work just yet. But, we'll now divide the array of points into different arrays according to the indices of these points and run the algorithm of both arrays for simplification! 
 
-Here's an example of the algorithm simplifying a closed figure in real time. 
-
 # Visvalingam-Whyatt Algorithm
 
 The Visvalingam-Whyatt algorithm isn't as popular as the Douglas Peucker algorithm but serves a great hand in the simplification of curves and polylines and may even be more effective than Douglas-Peucker due to the small number of edge cases it has. It's used to discard/remove any points that are not needed for the simplified curve unlike the Douglas Peucker algorithm where we look for points to keep. This algorithm has a really interesting and easy approach.
@@ -260,7 +258,9 @@ for _, p in ipairs(points) do
 end
 ```
 
-You can once again fidget around with the epsilon for the result you desire. I find this algorithm to be better than Douglas-Peucker because of its simplicity and effectiveness. The choice is yours!
+You can once again fidget around with the epsilon for the result you desire. I find this algorithm to be better than Douglas-Peucker because of its simplicity and effectiveness. The choice is yours! Here's the algorithm in action
+
+<img src="https://user-images.githubusercontent.com/74130881/150672264-73e6c3d3-508f-4d00-a6b0-2f8793ae4a16.gif" width="550px" />
 
 # Conclusion
 
