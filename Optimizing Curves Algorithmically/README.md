@@ -74,7 +74,7 @@ for i = 2, #points do
 end
 ```
 
-You can apply this optimization after calculating the points and during the rendering process or directly when calculating the points of the curve. It is also worth noting that it may not always be the case that the points lie **exactly** on the same straight line thus giving not so interesting optimization results. To counter this problem, you could check the perpendicular distance between the point and the straight line you are checking for. If the distance is less than some threshold, you could say that 'the point lies on the line'. Also take a note that the larger this threshold, the lesser the resolution of the curve. This is somewhat similar to how the Douglas Peucker Algorithm works. And in my opinion, this method is the go-to method for eliminating straight lines. There is an edge case to the distance check. If a point is close to the line but isn't in the direction where `next - start` vector is pointing, then it's going to malform the curve. To fix this, you may want to also check the direction in which the point lies.
+You can apply this optimization after calculating the points and during the rendering process or directly when calculating the points of the curve. It is also worth noting that it may not always be the case that the points lie **exactly** on the same straight line thus giving not so interesting optimization results. To counter this problem, you could check the perpendicular distance between the point and the straight line you are checking for. If the distance is less than some threshold, you could say that 'the point lies on the line'. Also take a note that the larger this threshold, the lesser the resolution of the curve. There is an edge case to the distance check. If a point is close to the line but isn't in the direction where `next - start` vector is pointing, then it's going to malform the curve. To fix this, you may want to also check the direction in which the point lies.
 
 <img width="500px" src="https://user-images.githubusercontent.com/74130881/150632590-fc4e7fce-4a1e-4666-975b-b7fc014bf619.png" />
 
@@ -102,6 +102,8 @@ local points = { ... }
 
 -- The points of the curve we need to keep after simplification i.e. the points of the simplified curve
 local simplifiedCurve = {}
+-- Fidget around with the epsilon to get the correct results!
+local epsilon = 10
 
 -- a and b are the end-points of the line segment.
 -- Calculate the distance between line segment ab and the point
@@ -130,6 +132,10 @@ local function GetFarthestPoint(allPoints, a: number, b: number) : number
           end
      end
      
+     if maxDistance < epsilon then 
+	  farthestPoint = -1
+     end
+     
      -- Returns the index of the farthest point 
      -- If the index is -1 then there are no points left in the bounds of a and b to check for!
      return farthestPoint
@@ -154,6 +160,15 @@ end
 table.insert(simplifiedCurve, points[1])
 DouglasPeucker(points, simplifiedCurve, 1, #points)
 table.insert(simplifiedCurve, points[#points])
+
+local previous = nil
+for _, p in ipairs(simplifiedCurve) do 
+     if previous then 
+     	  DrawLineSegment(p, previous)
+     else 
+	  previous = p  
+     end
+end
 ```
 
 That is it! Douglas-Peucker is the more well known curve and polyline simplification algorithm. It is widely used, but there are some edge cases that you'll run into for different kinds of curves and polylines but they shouldn't be hard to solve. Next we'll look into loops and polygons and how you can simplify them with this algorithm.
