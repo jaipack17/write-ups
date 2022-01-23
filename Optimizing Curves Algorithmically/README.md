@@ -264,6 +264,6 @@ You can once again fidget around with the epsilon for the result you desire. I f
 
 # Conclusion
 
-That is it for this article! It is a bit lengthy but it's worth knowing about these algorithms which will help the next time you have to generate curves. These algorithms are quite similar, all of them have the same goal, that is to simiply a curve but the procedures differ. So it is up to you on which algorithm you would want to make use of in your code. There are a few more algorithms that I haven't mentioned in this article due to them being very similar to the ones already explained. If you wish to read about more algorithms for line simplification, you'll find some great writings about Reumann–Witkam, Opheim and a few other algorithms online!
+That is it for this article! It is a bit lengthy but it's worth knowing about these algorithms which will help the next time you have to generate curves. These algorithms are quite similar, all of them have the same goal, that is to simplify a curve but the procedures differ. So it is up to you on which algorithm you would want to make use of in your code. There are a few more algorithms that I haven't mentioned in this article due to them being very similar to the ones already explained. If you wish to read about more algorithms for line simplification, you'll find some great writings about Reumann–Witkam, Opheim and a few other algorithms online!
 
 Thank you for reading.
