@@ -82,15 +82,13 @@ This technique will produce different results for different kinds of curves, for
 
 # Douglas-Peucker Algorithm
 
-The Ramer Douglas Peucker algorithm is one of the most famous algorithms used for optimizing curves. The idea is similar to what we read above, but this algorithm doesn't just look for straight lines but works to use lesser amount of line segments for the whole curve. This algorithm is pretty effecient besides a few edge cases that we saw earlier. 
+The Ramer Douglas Peucker algorithm is one of the most famous algorithms used for simplifying curves. The idea is similar to what we read above, this algorithm doesn't just look for straight lines but works to use lesser amount of line segments for the whole curve. This algorithm is pretty effecient besides a few edge cases that we saw earlier. 
 
-The idea is to reduce the amount of points used to draw the curve by filtering out the points we need for a simplified curve. First we take/form a line segment, this line segment is always the segment connecting the first and the last point of the curve. We can mark these two points to be kept for the optimized curve. We then define an epsilon or a small threshold. The greater this threshold, the lesser the resoluton of the curve or in other words the lesser the amount of points used for the curve. We then find the point on the curve that is the farthest from the line segment connecting the end points of the curve, lets call this point A. We then change the line segment we took earlier to connect the endpoint of the curve closest to point A with point A, while still keeping our threshold intact.
+The idea is to reduce the amount of points used to draw the curve by filtering out the points we need to 'keep' for a simplified curve. First we form a line segment, this line segment is always the segment connecting the first and the last point of the curve. We can mark these two points to be kept for the optimized curve. We then define an epsilon or a small threshold. The greater this threshold, the lesser the resoluton of the curve or in other words the lesser the amount of points used for the curve. We then find the point on the curve that is the farthest from the line segment connecting the end points of the curve, lets call this point A. We then change the line segment we took earlier to connect the endpoint of the curve closest to point A with point A, while still keeping our threshold intact.
 
 <img width="500px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/RDP%2C_varying_epsilon.gif/330px-RDP%2C_varying_epsilon.gif" />
 
 [Media Source](https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm)
-
-One downside of this algorithm is that, it can only be applied after you calculate all the points on the curve and not while calculating the points on the curve.
 
 # Douglas-Peucker Algorithm on Loops and Polygons
 
