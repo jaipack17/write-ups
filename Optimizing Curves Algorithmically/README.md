@@ -161,6 +161,7 @@ table.insert(simplifiedCurve, points[1])
 DouglasPeucker(points, simplifiedCurve, 1, #points)
 table.insert(simplifiedCurve, points[#points])
 
+-- Draw the simplified curve
 local previous = nil
 for _, p in ipairs(simplifiedCurve) do 
      if previous then 
@@ -177,12 +178,28 @@ That is it! Douglas-Peucker is the more well known curve and polyline simplifica
 
 # Douglas-Peucker Algorithm on Loops and Polygons
 
+Lets talk about how we'd simplify loops and closed polygons with the Douglas-Peucker algorithm. The algorithm seems to work fine on polylines and curves, but to make it work for closed figures is a bit trickier. Let's say we have a closed figure, we consider the code we wrote above without any new modifications. Running the simplification algorithm on this closed figure may give you inaccurate or even incorrect results.
 
+The reason to this is because of how we select our starting points initially. Let's walk through a few examples. For the first example we arbitrarily choose two random points of the closed figure to be the starting points for our algorithm. Lets consider our closed figure to have atleast 60 points as its vertices, choosing something random like the 10th and the n-40th index will do. Run the algorithm on this closed figure and observe. Here's the result for my closed figure before and after running the algorithm. The starting points are highlighted with green.
+
+<img src="https://user-images.githubusercontent.com/74130881/150668202-defcb3c4-eed1-42c4-a384-1d7c74120bb0.png" width="450px" /> <img src="https://user-images.githubusercontent.com/74130881/150668233-936ec60c-fa29-431d-9d30-27242a60d444.png" width="400px" />
+
+The algorithm was able to bring the number of line segments we use to draw the closed figure from 120 to 41, but gives an incorrect figure. Why is that so? It is because of the incorrect order of points given by the algorithm to us after the simplification of the closed figure! Well why did this happen? Since the starting points are randomly assigned, the points that are outside the bounds of the indices of these selected points are not included as a part of the closed figure by the algorithm!
+
+The start and end point of a closed figure are the same, so... how can we choose our starting points? We have a few cases that can help us. We can set the last index of the array of points to be the same as the first, consider both the points at the first and the last index as the starting points and run the algorithm. We'll notice that the algorithm works perfectly! Another method would be to consider the first point of the array and the last point of the array without ever editing or omitting the array and use these as the starting points. The point farthest to the line segment formed by these starting points will be chosen and the algorithm would work just fine.
+
+If the above methods don't seem to work as well, we have another choice! To go back to choosing random starting points or choosing the first starting point and the point farthest to it as the end point. The algorithm won't work just yet. But, we'll now divide the array of points into different arrays according to the indices of these points and run the algorithm of both arrays for simplification! 
+
+Here's an example of the algorithm simplifying a closed figure in real time. 
 
 # Visvalingam-Whyatt Algorithm
 
+The Visvalingam-Whyatt algorithm isn't as popular as the Douglas Peucker algorithm but serves a great hand in the simplification of curves and polylines. This algorithm has an iterative approach. The algorithm is used to discard/remove any points that are not needed for the simplified curve unlike the Douglas Peucker algorithm where we look for points to keep.
+
+The algorithm has a very simple procedure, we consider an epsilon or a threshold that's a number, just like the Douglas-Peucker algorithm. Next we 
+
 # Conclusion
 
-That is it for this article! It is a bit lengthy but it's worth knowing about these algorithms which will help the next time you have to generate curves. These algorithms are quite similar, all of them have the same goal, that is to simiply a curve but the procedures differ. So it is up to you on which algorithm you would want to make use of in your code. There are a few more algorithms that I haven't mentioned in this article due to them being very similar to the ones already explained.
+That is it for this article! It is a bit lengthy but it's worth knowing about these algorithms which will help the next time you have to generate curves. These algorithms are quite similar, all of them have the same goal, that is to simiply a curve but the procedures differ. So it is up to you on which algorithm you would want to make use of in your code. There are a few more algorithms that I haven't mentioned in this article due to them being very similar to the ones already explained. If you wish to read about more algorithms for line simplification, you'll find some great writings about Reumann–Witkam, Opheim and a few other algorithms online!
 
 Thank you for reading.
