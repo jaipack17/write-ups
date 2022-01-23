@@ -196,7 +196,7 @@ It has a very simple procedure, we consider an epsilon or a threshold that's a n
 
 <img src="https://user-images.githubusercontent.com/74130881/150669687-8a2f21c1-56b5-4a5e-a710-d331cb33b503.png" width="500px" />
 
-For the implementation, we simply iterate through the points, form triangles, remove the smaller triangle with the area lesser than the epsilon, over and over again until we have no triangles that have areas lesser than the epsilon. We'll be storing these triangles in an array but using a min-heap datastruction will give better and faster results for finding the triangle with the smallest area out of all.
+For the implementation, we simply iterate through the points, form triangles, remove the smaller triangle with the area lesser than the epsilon, over and over again until we have no triangles that have areas lesser than the epsilon. We'll be storing these triangles in an array but using a min-heap data structure will give better and faster results for finding the triangle with the smallest area out of all.
 
 ```lua
 local points = { ... }
