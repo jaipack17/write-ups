@@ -122,3 +122,238 @@ $$
 It is evident that the partial derivatives of large number of outputs with respect to one input can be calculated in a single forward pass. Thus forward mode auto-differentiation is useful for functions with **small number of inputs and large number of outputs**. This method of auto-differentiation is not particularly useful for machine learning since neural networks contain very large number of input parameters compared to just a few outputs (loss function during backpropagation with weights and biases as parameters). We'll still look into how we can implement forward mode autograd using **Dual Numbers** (to be introduced in further sections), but for now lets understand Reverse Mode auto-differentiation, which is the exact algorithm used during backpropagation in neural networks.
 
 ### 3.2 Reverse Mode
+
+## 4. Building the Library
+
+The first step to building the library was deciding what the API would look like and how different parts inside the library would interact with each other. I took inspiration from PyTorch's (a famous tensor library for deep learning in python) minimalistic API which is both easy to use and easy to understand. I wanted to divide the library API into two parts: Forward mode and Reverse mode, since both have different use cases and different algorithms. I quickly setup a new C++ project with a CMake build ecosystem since I wanted to make it easy for people to begin using my library.
+
+### 4.1 Forward Mode Auto-differentiation With Dual Numbers
+
+In order to prevent the hastle of building a computation graph for the forward mode and traversing different 'paths' in the computation graph, I took an easier route i.e. using Dual numbers and operator overloading (a feature of C++ classes). 
+
+A dual number fundamentally is of the form $x=a+b\epsilon$ where $\epsilon^2 = 0$. The number **a** is the numerical value of the dual and **b** is the partial derivative of the dual with respect to some input variable (this input is also a Dual with b=0 or 1 where b is the seed). In my library I have implemented dual numbers as a class named Dual.  The Dual class object will have 2 public attributes: value and grad which mimic **a** and **b**. Essentially b represents $\dot{x}$ in table 3.1.
+
+> **Recap:**
+ In forward mode auto-differentiation, there is a forward accumulation of gradients and numerical values of expressions simultaneously through the nodes of > a computation graph. The gradients are calculated per node with respect to the inputs. Each input is given a seed (1 or 0) in a one-hot fashion (forexample a_seed=1, b_seed=0, c_seed=0 or a_seed=0, b_seed=1, c_seed=0). This seed represents the partial derivatives of inputs with respect to particular input.
+
+<p align="center">
+<img width="300"  alt="ForwardAD" src="https://github.com/user-attachments/assets/f165e1c1-b340-41a3-8580-e2d7fe5d54b7" /></p><br/>
+
+https://en.wikipedia.org/wiki/Automatic_differentiation
+
+Let's take an example of the function $f=ab$ for two dual numbers $a=x+\dot{x}\epsilon$ and $b=y+\dot{y}\epsilon$. Naturally $f$ is also a dual number which results from multiplying $a$ and $b$ as follows:
+
+$$
+f = ab
+$$
+
+$$
+f = (x+\dot{x}\epsilon)(y+\dot{y}\epsilon)
+$$
+
+$$
+f = xy + \dot{x}y\epsilon + \dot{y}x\epsilon + \dot{x}\dot{y}\epsilon^2
+$$
+
+Now $\epsilon^2 = 0$
+
+$$
+f = xy + (x\dot{y} + y\dot{x})\epsilon
+$$
+
+It is evident that the term accompanying $\epsilon$ represents $x\frac{\partial f}{\partial y} + y\frac{\partial f}{\partial x}$. If we pass a seed $\dot{x} =1$ and $\dot{y}=0$. We obtained $f = xy + y\epsilon$. The term accompanying epsilon automatically becomes $\frac{\partial f}{\partial x}$. This is the beauty of Dual numbers.
+
+This computation graph can be imagined using arithmetic operators and simple math function operations. Thus operator overloading on Duals help to mimic operations like add, sub, mul, div as well as additional math functions like sin, cos, tan, pow, hyperbolic, inverse trigonometric, inverse hyperbolic which I created under namespace. These functions can act on Dual objects and simulate the forward pass automatically. In each of these functions the expression's value and derivative are calculated simultaneously.
+
+Here's an example of how Dual arithmetic and functions can be implemented in C++.
+
+```cpp
+// Basic wireframe of the class Dual
+
+class Dual {
+public:
+    // The actual value
+    double value;
+
+    // The derivative value (gradient)
+    double grad;
+
+    Dual();
+    Dual(double scalar, int seed = 1);
+
+    void zero_grad();
+}
+```
+
+Some arithmetic operations on Dual numbers using operator overloading. In all cases, chain, product and quotient rules are followed. 
+
+```cpp
+// x + y
+Dual Dual::operator+ (const Dual& d) {
+    Dual result;
+    result.value = value + d.value;
+    result.grad = grad + d.grad;
+    return result;
+}
+
+// x - y
+Dual Dual::operator- (const Dual& d) {
+    Dual result;
+    result.value = value - d.value;
+    result.grad = grad - d.grad;
+    return result;
+}
+
+// x * y
+Dual Dual::operator* (const Dual& d) {
+    Dual result;
+    result.value = d.value * value;
+    result.grad = d.value * grad + value * d.grad; // product rule
+    return result;
+}
+
+// x / y
+Dual Dual::operator/ (const Dual& d) {
+    Dual result;
+    result.value = value / d.value;
+    result.grad = (d.value * grad - value * d.grad)/(d.value*d.value);
+    return result;
+}
+```
+
+We can handle edge cases like operations between Dual numbers and constants like `int`, `double`, `float` etc separately to make the API friendly. One example is:
+
+```cpp
+// 1 - x
+Dual operator- (const double& a, const Dual& d) {
+    Dual result;
+    result.value = a - d.value;
+    result.grad = -d.grad;
+    return result;
+}
+```
+
+Here are some simple math functions like trigonometric, exponential, logarithmic, hyperbolic and inverse functions.
+
+```cpp
+#include <cmath>
+
+namespace ddl
+{
+    Dual sin (const Dual& d) {
+        Dual result;
+        result.value = std::sin(d.value);
+        result.grad = std::cos(d.value) * d.grad; // chain rule on sin(d)  
+        return result;
+    }
+    // similarly cos and tan
+
+    Dual exp (const Dual& d) {
+        Dual result;
+        result.value = std::exp(d.value);
+        result.grad = std::exp(d.value) * d.grad; // chain rule on e^d
+        return result;
+    }
+
+    Dual log (const Dual& d) {
+        Dual result;
+        result.value = std::log(d.value);
+        result.grad = (1/d.value) * d.grad; // chain rule on log(d)
+        return result;
+    }
+    
+    Dual pow (const Dual& d, double n) {
+        Dual result;
+        result.value = std::pow(d.value, n);
+        result.grad = n * std::pow(d.value, n-1) * d.grad; // n * d^n-1
+        return result;
+    }
+
+    Dual atan (const Dual& d) {
+        Dual result;
+        result.value = std::atan(d.value);
+        result.grad = d.grad * 1/(1+std::pow(d.value, 2)); // 1/(1+d^2)
+        return result;
+    }
+
+    // similarly asin, acos
+
+    Dual sinh (const Dual& d) {
+        Dual result;
+        result.value = std::sinh(d.value);
+        result.grad = std::cosh(d.value) * d.grad;
+        return result;
+    }
+
+    Dual tanh (const Dual& d) {
+        Dual result;
+        result.value = std::tanh(d.value);
+        result.grad = d.grad * (1 - std::pow(std::tanh(d.value), 2)); // 1-(tanh(d))^2
+        return result;
+    }
+
+    // similarly cosh
+
+    Dual asinh (const Dual& d) {
+        Dual result;
+        result.value = std::asinh(d.value);
+        result.grad = d.grad * 1/std::sqrt(1+std::pow(d.value, 2)); // 1/sqrt(1+d^2)
+        return result;
+    }
+
+    // similarly acosh, atanh
+}
+```
+
+Another feature is the [Jacobian](https://en.wikipedia.org/wiki/Jacobian_matrix_and_determinant). The `jacobian()` function under `diffodl/jacobian.hpp` takes in 2 parameters. The first parameter is a callback function which takes in a vector of Duals as inputs and returns a vector Duals as outputs (a representation of vector functions). And the second parameter is a vector of doubles which act as values of inputs or the values at which derivatives are computed. The `jacobian()` function then returns an [`Eigen::MatrixXd`](https://libeigen.gitlab.io/eigen/docs-nightly/group__TutorialMatrixClass.html) object containing all partial derivatives. The matrix is of the form:
+<p align="center"><img width="200" alt="image" src="https://github.com/user-attachments/assets/93c11142-a7cc-46a0-b336-d66418657bd2" /></p>
+
+
+Code Example:
+```cpp
+#include <iostream>
+#include <diffodl/dual.hpp>
+#include <diffodl/jacobian.hpp>
+#include <eigen3/Eigen/Dense>
+
+std::vector<Dual> polar_to_cartesian(const std::vector<Dual>& inputs) {
+    Dual r = inputs[0];
+    Dual theta = inputs[1];
+
+    Dual x = r * ddl::cos(theta);
+    Dual y = r * ddl::sin(theta);
+
+    return {x, y};
+}
+
+
+int main() {
+    std::vector<double> polar_point = {1, 3.14159265358979323846/2}; // (r=1, theta=pi/2)
+    Eigen::MatrixXd J2 = jacobian(polar_to_cartesian, polar_point);
+
+    std::cout << J2 << std::endl;
+    std::cout << J2.determinant() << std::endl; // = r = 1
+
+    return 0;
+}
+```
+
+In your main.cpp
+```cpp
+#include <diffodl/dual.hpp>
+#include <diffodl/jacobian.hpp>
+#include <Eigen/Dense> // if required
+
+using namespace ddl; // for math functions
+```
+
+If you want to run unit tests, install Catch2. Go into the tests/ directory of diffoDL.
+```
+mkdir build
+cd build
+cmake --build .
+./runtests
+```
+
+Thanks!
+
